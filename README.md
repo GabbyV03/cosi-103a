@@ -1,2 +1,3 @@
 # cosi-103a
-yaosun@brandeis.edu
+Qiping Zhang
+qipingzhang@brandeis.edu
