@@ -1,2 +1,3 @@
 # cosi-103a
-yaosun@brandeis.edu
+Athena Bai
+athenabai@brandeis.edu
