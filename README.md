@@ -1,3 +1,3 @@
 # cosi-103a
-Qiping Zhang
+Qiping Zhang:
 qipingzhang@brandeis.edu
