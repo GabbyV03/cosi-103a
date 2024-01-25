@@ -1,4 +1,4 @@
-# cosi-103a Group T
+# Spring 2024 COSI-103A Group T
 
 Qiping Zhang: qipingzhang@brandeis.edu
 
