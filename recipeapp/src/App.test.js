@@ -30,4 +30,9 @@ describe('App', () => {
     const imageElement = screen.getByAltText('Chocolate Chip Cookies');
     expect(imageElement).toBeInTheDocument();
   });
+
+  test('renders Grilled Salmon with Lemon-Dill Sauce header', () => {
+    const headerElement = screen.getByText(/Grilled Salmon with Lemon-Dill Sauce/i);
+    expect(headerElement).toBeInTheDocument();
+  });
 });
