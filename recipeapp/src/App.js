@@ -7,13 +7,13 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Best Recipes</h1>
-        <RecipeFromAthena />
+        <BasicExample/>
       </header>
     </div>
   );
 }
 
-function RecipeFromAthena() {
+function BasicExample() {
   return (
     <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="0">
