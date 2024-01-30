@@ -6,13 +6,13 @@ import React from 'react';
 function App() {
   return (
     <div className="App">
-      <recipesfromqipingzhang />
+      <BasicExamples />
     </div>
   );
 }
 
 
-function recipesfromqipingzhang() {
+function BasicExamples() {
   return (
     <Accordion>
       <Accordion.Item eventKey="0">
