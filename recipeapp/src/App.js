@@ -5,13 +5,13 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <BasicExample />
+      <recipesfromqipingzhang />
     </div>
   );
 }
 
 
-function BasicExample() {
+function recipesfromqipingzhang() {
   return (
     <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="0">
