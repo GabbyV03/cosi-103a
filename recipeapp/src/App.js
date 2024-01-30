@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import Accordion from 'react-bootstrap/Accordion';
 import './App.css';
+import React from 'react';
 
 function App() {
   return (
@@ -101,6 +102,57 @@ function BasicExample() {
     </div>
   </Accordion.Body>
 </Accordion.Item>
+       <Accordion.Item eventKey="4">
+        <Accordion.Header>Chocolate Chip Cookies</Accordion.Header>
+        <Accordion.Body>
+          <div align="left">
+            <h2>Procedure:</h2>
+            <ol>
+              <li>Preheat your oven to 375°F (190°C). Line baking sheets with parchment paper.</li>
+              <li>In a large bowl, beat the softened butter, granulated sugar, brown sugar, and vanilla extract until creamy. Add the eggs, one at a time, beating well after each addition.</li>
+              <li>In another bowl, whisk together the flour, baking soda, and salt. Gradually beat the dry ingredients into the butter mixture.</li>
+              <li>Stir in the chocolate chips by hand.</li>
+              <li>Drop rounded tablespoons of dough onto the prepared baking sheets. Bake for 9 to 11 minutes or until golden brown.</li>
+            </ol>
+            <h2>Ingredients:</h2>
+            <ul>
+              <li>1 cup unsalted butter, softened</li>
+              <li>3/4 cup granulated sugar</li>
+              <li>3/4 cup packed brown sugar</li>
+              <li>1 teaspoon vanilla extract</li>
+              <li>2 large eggs</li>
+              <li>2 1/4 cups all-purpose flour</li>
+              <li>1 teaspoon baking soda</li>
+              <li>2 cups semisweet chocolate chips</li>
+            </ul>
+            <img src="cookie.png" style={{width: "300px", height: "200px"}} alt="Chocolate Chip Cookies" />
+          </div>
+        </Accordion.Body>
+     </Accordion.Item>
+      <Accordion.Item eventKey="5">
+        <Accordion.Header>Lemon Drizzle Cake</Accordion.Header>
+        <Accordion.Body>
+          <div align="left">
+            <h2>Procedure:</h2>
+            <ol>
+              <li>Preheat your oven to 180°C (350°F). Grease and line a loaf tin with parchment paper or a loaf liner.</li>
+              <li>In a large bowl, beat together the softened butter and sugar until creamy. Gradually add the eggs, beating well after each addition.</li>
+              <li>Sift in the remaining flour and baking powder, folding gently into the mixture until well combined.</li>
+              <li>Stir in the lemon zest and lemon juice.</li>
+              <li>Pour the batter into the prepared tin and bake for 45 minutes or until a skewer inserted into the center comes out clean.</li>
+            </ol>
+            <h2>Ingredients:</h2>
+            <ul>
+              <li>225g unsalted butter, softened</li>
+              <li>225g caster sugar</li>
+              <li>4 large eggs</li>
+              <li>225g self-raising flour</li>
+              <li>1 teaspoon baking powder</li>
+            </ul>
+            <img src="lemon_drizzle_cake.png" style={{width: "300px", height: "200px"}} alt="Lemon Drizzle Cake" />
+          </div>
+        </Accordion.Body>
+      </Accordion.Item>
     </Accordion>
   );
 }
