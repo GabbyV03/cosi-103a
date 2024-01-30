@@ -13,7 +13,7 @@ function App() {
 
 function BasicExample() {
   return (
-    <Accordion defaultActiveKey="0">
+    <Accordion>
       <Accordion.Item eventKey="0">
         <Accordion.Header>Salty Crispy Chicken (Salted Fried Chicken)</Accordion.Header>
         <Accordion.Body>
@@ -60,6 +60,47 @@ function BasicExample() {
         </div>
         </Accordion.Body>
       </Accordion.Item>
+      <Accordion.Item eventKey="2">
+        <Accordion.Header>Gyudon (Japanese Beef Bowl)</Accordion.Header>
+        <Accordion.Body>
+          <div align="left">
+            Procedure:<br />
+            1. Thinly slice the beef and onion.<br />
+            2. In a pan, cook the beef until browned. Add onions and cook until softened.<br />
+            3. Add the dashi, soy sauce, mirin, and sugar. Simmer until the sauce thickens.<br />
+            4. Serve the beef and onion over a bowl of hot steamed rice.<br />
+            Ingredients:<br />
+            300g thinly sliced beef<br />
+            1 onion, thinly sliced<br />
+            1 cup dashi stock<br />
+            3 tablespoons soy sauce<br />
+            3 tablespoons mirin<br />
+            2 tablespoons sugar<br />
+            <img src="3.jpeg" width="300px" height="200px" alt="Recipe 3" />
+          </div>
+        </Accordion.Body>
+      </Accordion.Item>
+      <Accordion.Item eventKey="3">
+  <Accordion.Header>Grilled Salmon with Lemon-Dill Sauce</Accordion.Header>
+  <Accordion.Body>
+    <div align="left">
+      Procedure:<br />
+      1. Preheat grill to medium-high heat.<br />
+      2. Season salmon fillets with salt and pepper.<br />
+      3. In a small bowl, mix together lemon juice, olive oil, garlic, dill, and honey. Brush mixture over salmon fillets.<br />
+      4. Grill salmon for 4-5 minutes per side, or until fish flakes easily with a fork.<br />
+      Ingredients:<br />
+      4 salmon fillets<br />
+      Salt and pepper to taste<br />
+      ¼ cup lemon juice<br />
+      2 tablespoons olive oil<br />
+      2 cloves garlic, minced<br />
+      2 tablespoons fresh dill, chopped<br />
+      1 tablespoon honey<br />
+      <img src="4.jpeg" width="300px" height="200px" alt="Recipe 4" />
+    </div>
+  </Accordion.Body>
+</Accordion.Item>
     </Accordion>
   );
 }
