@@ -5,8 +5,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - run: npm ci
-      - run: npm test
+          
+      - name: Navigate to recipeapp directory
+        run: cd recipeapp
+        working-directory: recipeapp
+        
+      - name: Install dependencies
+        run: npm ci
+        working-directory: recipeapp
+        
+      - name: Run tests
+        run: npm test
+        working-directory: recipeapp
