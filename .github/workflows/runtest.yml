@@ -19,7 +19,7 @@ jobs:
       - name: Install Dependencies
         run: |
           cd recipeapp
-          npm ci
+          npm i
 
       - name: Run Tests
         run: |
