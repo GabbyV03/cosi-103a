@@ -9,10 +9,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: List Repository Contents
-        run: |
-          ls -la
-          cd cosi-103a
-          ls -la
+        run: ls -la
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -21,10 +18,10 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd cosi-103a/recipeapp
+          cd recipeapp
           npm ci
 
       - name: Run Tests
         run: |
-          cd cosi-103a/recipeapp
+          cd recipeapp
           npm test
