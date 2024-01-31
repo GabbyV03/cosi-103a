@@ -1,40 +1,52 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import RecipeFromAthena from './App';
 import { render, screen } from '@testing-library/react';
+import App from './App';
 
-// Basic "smoke test" to check if
-// the <App /> component renders without throwing
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-});
+describe('App', () => {
+  beforeEach(() => {
+    render(<App />);
+  });
 
-// "Smoke test" to check if
-// the <RecipeFromAthena /> component renders without throwing
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<RecipeFromAthena />, div);
-});
+  test('renders Mushroom soup header', () => {
+    const headerElement = screen.getByText(/Mushroom soup/i);
+    expect(headerElement).toBeInTheDocument();
+  });
 
-// Test that the <App /> component renders
-// the heaing of the landing page "Best Recipes".
-it('renders landing page title', () => {
-  render(<App />);
-  expect(screen.getByText('Best Recipes')).toBeInTheDocument();
-});
+  test('renders Lemon Drizzle Cake header', () => {
+    const headerElement = screen.getByText(/Lemon Drizzle Cake/i);
+    expect(headerElement).toBeInTheDocument();
+  });
 
-// Test that the <RecipeFromAthena /> component
-// renders the recipe name "Cheesecake".
-it('renders recipe name', () => {
-  render(<RecipeFromAthena />);
-  expect(screen.getByText('Cheesecake')).toBeInTheDocument();
-});
+  test('renders Chocolate Chip Cookies header', () => {
+    const headerElement = screen.getByText(/Chocolate Chip Cookies/i);
+    expect(headerElement).toBeInTheDocument();
+  });
 
-// Test that the <RecipeFromAthena /> component renders
-// the image of the cheesecake 
-it('renders recipe image', () => {
-  render(<RecipeFromAthena />);
-  expect(screen.getByText('Best Recipes')).toBeInTheDocument();
-});
+  test('renders Lemon Drizzle Cake image', () => {
+    const imageElement = screen.getByAltText('Lemon Drizzle Cake');
+    expect(imageElement).toBeInTheDocument();
+  });
+
+  test('renders Chocolate Chip Cookies image', () => {
+    const imageElement = screen.getByAltText('Chocolate Chip Cookies');
+    expect(imageElement).toBeInTheDocument();
+  });
+
+  test('renders Grilled Salmon with Lemon-Dill Sauce header', () => {
+    const headerElement = screen.getByText(/Grilled Salmon with Lemon-Dill Sauce/i);
+    expect(headerElement).toBeInTheDocument();
+  
+    
+      "jest"; {
+    // ...
+    "setupFilesAfterEnv"; ["<rootDir>/src/setupTests.js"]
+   }
+
+   const localStorageMock = {
+    getItem: jest.fn(),
+    setItem: jest.fn(),
+    removeItem: jest.fn(),
+    clear: jest.fn(),
+  };
+  global.localStorage = localStorageMock;
+  });
