@@ -8,5 +8,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - run: cd recipeapp && npm ci
-      - run: cd recipeapp && npm test
+      - run: cd recipeapp 
+      - run: npm i
+      - run: npm test
