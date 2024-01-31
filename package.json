@@ -1,0 +1,11 @@
+{
+  "name": "cosi-103a",
+  "version": "1.0.0",
+  "description": "Qiping Zhang: qipingzhang@brandeis.edu",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

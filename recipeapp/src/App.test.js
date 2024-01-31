@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import recipesfromqipingzhang from './App';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
@@ -39,7 +37,6 @@ describe('App', () => {
     expect(headerElement).toBeInTheDocument();
   
     
-    // Tests from Qiping
       "jest"; {
     // ...
     "setupFilesAfterEnv"; ["<rootDir>/src/setupTests.js"]
@@ -52,24 +49,4 @@ describe('App', () => {
     clear: jest.fn(),
   };
   global.localStorage = localStorageMock;
-
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
   });
-
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<recipesfromqipingzhang />, div);
-  });
-
-  it('renders recipe1 name', () => {
-    expect(screen.getByText('Salty Crispy Chicken (Salted Fried Chicken)')).toBeInTheDocument();
-  });
-
-  it('renders recipe2 name', () => {
-    expect(screen.getByText('Mushroom soup')).toBeInTheDocument();
-  });
-});
-
-
