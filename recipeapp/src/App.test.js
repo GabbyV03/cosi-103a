@@ -49,4 +49,4 @@ describe('App', () => {
     clear: jest.fn(),
   };
   global.localStorage = localStorageMock;
-  });
+  })});
