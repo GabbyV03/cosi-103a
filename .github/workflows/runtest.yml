@@ -4,22 +4,9 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
           node-version: '14'
-          
-      - name: Navigate to recipeapp directory
-        run: cd cosi-103a/recipeapp
-        working-directory: cosi-103a/recipeapp
-        
-      - name: Install dependencies
-        run: npm ci
-        working-directory: cosi-103a/recipeapp
-        
-      - name: Run tests
-        run: npm test
-        working-directory: cosi-103a/recipeapp
+      - run: npm ci
+      - run: npm test
