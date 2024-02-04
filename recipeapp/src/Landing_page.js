@@ -15,6 +15,10 @@ import {
   Link,
 } from "react-router-dom";
 
+// The search button is not implemented and commented out for simplicity.
+// In the NavBar, the button with dropdown and the disabled button
+// are also not implemented and kept in the comments for reference.
+
 function Landing_page() {
   return (
     <div className="Landing_page">
@@ -68,7 +72,7 @@ function Navigater() {
       <div>
         <Navbar expand="lg" className="bg-body-tertiary">
           <Container fluid>
-            <Navbar.Brand href="#">Landing page</Navbar.Brand>
+            <Navbar.Brand href="/">Group T</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
               <Nav
@@ -76,23 +80,25 @@ function Navigater() {
                 style={{ maxHeight: '100px' }}
                 navbarScroll
               >
-                <Nav.Link href="#action1">Home</Nav.Link>
-                <Nav.Link href="#action2">Link</Nav.Link>
-                <NavDropdown title="Link" id="navbarScrollingDropdown">
-                  <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action4">
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="Recipe">Recipe</Nav.Link>
+                <Nav.Link href="Team">Team</Nav.Link>
+                {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
+                  <NavDropdown.Item href="#action4">Action</NavDropdown.Item>
+                  <NavDropdown.Item href="#action5">
                     Another action
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action5">
+                  <NavDropdown.Item href="#action6">
                     Something else here
                   </NavDropdown.Item>
-                </NavDropdown>
-                <Nav.Link href="#" disabled>
+                </NavDropdown> */}
+                {/* <Nav.Link href="#" disabled>
                   Link
-                </Nav.Link>
+                </Nav.Link> */}
               </Nav>
-              <Form className="d-flex">
+
+              {/* <Form className="d-flex">
                 <Form.Control
                   type="search"
                   placeholder="Search"
@@ -100,7 +106,8 @@ function Navigater() {
                   aria-label="Search"
                 />
                 <Button variant="outline-success">Search</Button>
-              </Form>
+              </Form> */}
+
             </Navbar.Collapse>
           </Container>
         </Navbar>

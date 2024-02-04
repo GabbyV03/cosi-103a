@@ -20,10 +20,16 @@ function BasicExamples() {
         <Accordion.Header>Salty Crispy Chicken (Salted Fried Chicken)</Accordion.Header>
         <Accordion.Body>
         <div align="left">
+        Description:<br />
+                      The crispy coating is achieved through frying, and the salt seasoning enhances
+                      the flavor of the chicken, creating a savory taste.<br />
+                      Different cuisines may have their own variations of salty crispy chicken,
+                      incorporating unique spices, herbs, or cooking techniques. <br /><br />
         Procedure:<br />
                       1.Cut chicken into pieces. Mix seasonings with chicken. Marinate for at least an hour.<br />
                       2.Combine ingredients for batter. Set aside.<br />
-                      3.Heat oil in a pan over medium heat. Dip marinated chicken pieces first in batter, then deep fry until golden brown and crisp. Drain excess oil on paper towels. Serve immediately.<br />
+                      3.Heat oil in a pan over medium heat. Dip marinated chicken pieces first in batter, 
+                      then deep fry until golden brown and crisp. Drain excess oil on paper towels. Serve immediately.<br />
         Ingredients:<br />
                      500 grams chicken thighs<br />
                      1 tablespoon salt<br />
@@ -41,6 +47,8 @@ function BasicExamples() {
         <Accordion.Header>Mushroom soup</Accordion.Header>
         <Accordion.Body>
         <div align="left">
+        Description:<br />
+                      1. This creamy mushroom soup is made with three types of mushrooms and chicken stock.<br />
         Procedure:<br />
                       1.Melt 2 tablespoons of the butter in a large pot such as a Dutch oven over medium-high heat. Add the garlic and shallot, cook for 1 minute, until they begin to soften. Add the mushrooms and cook for about 3 minutes, until tender and browned. Transfer all the contents of the pot to a bowl.<br />
                       2.Add the remaining 1 tablespoon of butter to the pot. Once melted, sprinkle in the flour and whisk it quickly into a paste. Reduce the heat to medium. Add the stock a little at a time, whisking out the clumps between each addition.<br />
@@ -66,6 +74,9 @@ function BasicExamples() {
         <Accordion.Header>Gyudon (Japanese Beef Bowl)</Accordion.Header>
         <Accordion.Body>
           <div align="left">
+            Description:<br />
+            Japanese beef bowl consists of thinly sliced beef and onions
+            simmered in a sweet and delicious sauce, served over steamed rice<br />
             Procedure:<br />
             1. Thinly slice the beef and onion.<br />
             2. In a pan, cook the beef until browned. Add onions and cook until softened.<br />
@@ -86,6 +97,9 @@ function BasicExamples() {
   <Accordion.Header>Grilled Salmon with Lemon-Dill Sauce</Accordion.Header>
   <Accordion.Body>
     <div align="left">
+      Description:<br />
+      This grilled salmon recipe is a quick-cooking and healthy dinner that's perfect for warmer weather.
+      The lemon-dill sauce is the perfect finishing touch.<br />
       Procedure:<br />
       1. Preheat grill to medium-high heat.<br />
       2. Season salmon fillets with salt and pepper.<br />
@@ -107,6 +121,8 @@ function BasicExamples() {
         <Accordion.Header>Chocolate Chip Cookies</Accordion.Header>
         <Accordion.Body>
           <div align="left">
+            <h2>Description:</h2>
+              <li>A classic and beloved sweet treat known for its chewy or crispy texture.</li>
             <h2>Procedure:</h2>
             <ol>
               <li>Preheat your oven to 375°F (190°C). Line baking sheets with parchment paper.</li>
@@ -134,6 +150,8 @@ function BasicExamples() {
         <Accordion.Header>Lemon Drizzle Cake</Accordion.Header>
         <Accordion.Body>
           <div align="left">
+            <h2>Description:</h2>
+              <li>A popular choice for tea time, dessert, or special occasions. </li>
             <h2>Procedure:</h2>
             <ol>
               <li>Preheat your oven to 180°C (350°F). Grease and line a loaf tin with parchment paper or a loaf liner.</li>
