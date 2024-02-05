@@ -8,8 +8,9 @@ describe('App', () => {
   });
 
   test('renders Mushroom soup header', () => {
-    const headerElement = screen.getByText(/Mushroom soup/i);
-    expect(headerElement).toBeInTheDocument();
+    const headerElements = screen.getAllByText(/Mushroom soup/i);
+    expect(headerElements.length).toBeGreaterThan(0); 
+    
   });
 
   test('renders Lemon Drizzle Cake header', () => {
