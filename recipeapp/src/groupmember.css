@@ -1,0 +1,47 @@
+/* General styling for the card group for alignment and spacing */
+.card-group {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Adds space between cards */
+    flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
+  }
+  
+  /* Custom card styling for a modern look */
+  .card-custom {
+    max-width: 18rem;
+    margin-bottom: 20px; /* Adds space below each card */
+    border: none; /* Removes the default border */
+    border-radius: 15px; /* Rounds the corners of the card */
+    overflow: hidden; /* Ensures the content fits within the rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+  }
+  
+  /* Styling for the card image */
+  .card-img-top {
+    height: 300px;
+    object-fit: cover;
+  }
+  
+  /* Card hover effects */
+  .card-custom:hover {
+    transform: translateY(-5px); /* Slightly raises the card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increases shadow for a "lifted" effect */
+  }
+  
+  /* Card content styling for better typography */
+  .card-body {
+    text-align: center; /* Centers the text inside the card body */
+  }
+  
+  .card-title {
+    margin-bottom: 10px; /* Adds some space below the card title */
+    font-weight: 600; /* Makes the title bolder */
+  }
+  
+  /* Optional: You can also style the Card.Text if you decide to include descriptions later */
+  .card-text {
+    color: #666; /* Dark grey color for the text, softer than pure black */
+    font-size: 0.9rem; /* Slightly smaller font size for the description text */
+  }
+  

@@ -1,5 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
+import './groupmember.css';
 
 // Images to insert should be in the folder "public"
 // Lines that are commented out are optional and just for reference
@@ -9,41 +10,33 @@ import CardGroup from 'react-bootstrap/CardGroup';
 function GroupExample() {
   return (
     <CardGroup>
-
-      <Card>
-        <Card.Img variant="top" src="2.jpeg" alt="No card image"/>
+      <Card className="card-custom">
+        <Card.Img variant="top" src="headshot/person1.png" alt="Athena Bai" className="card-img-top"/>
         <Card.Body>
-          <Card.Title>Teammate A</Card.Title>
-          {/* <Card.Text> */}
-            {/* Teammate A description */}
-          {/* </Card.Text> */}
-        </Card.Body>
-        {/* <Card.Footer> */}
-          {/* <small className="text-muted">Footer contents (if needed)</small> */}
-        {/* </Card.Footer> */}
-      </Card>
-
-      <Card>
-        <Card.Img variant="top" src="2.jpeg" alt="No card image"/>
-        <Card.Body>
-          <Card.Title>Teammate B</Card.Title>
+          <Card.Title>Athena Bai</Card.Title>
         </Card.Body>
       </Card>
 
-      <Card>
-        <Card.Img variant="top" src="3.jpeg" alt="No card image"/>
+      <Card className="card-custom">
+        <Card.Img variant="top" src="headshot/person2.png" alt="Gabriella Vukomanovic" className="card-img-top"/>
         <Card.Body>
-          <Card.Title>Teammate C</Card.Title>
+          <Card.Title>Gabriella Vukomanovic</Card.Title>
         </Card.Body>
       </Card>
 
-      <Card>
-        <Card.Img variant="top" src="3.jpeg" alt="No card image"/>
+      <Card className="card-custom">
+        <Card.Img variant="top" src="headshot/person3.png" alt="Qiping Zhang" className="card-img-top"/>
         <Card.Body>
-          <Card.Title>Teammate D</Card.Title>
+          <Card.Title>Qiping Zhang</Card.Title>
         </Card.Body>
       </Card>
-      
+
+      <Card className="card-custom">
+        <Card.Img variant="top" src="headshot/person4.png" alt="Yao Sun" className="card-img-top"/>
+        <Card.Body>
+          <Card.Title>Yao Sun</Card.Title>
+        </Card.Body>
+      </Card>
     </CardGroup>
   );
 }

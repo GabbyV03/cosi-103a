@@ -1,4 +1,5 @@
-import './App.css';//who in charge of style should create a css for landing page and replace this
+import './landingpage.css';
+import Accordion from 'react-bootstrap/Accordion';
 import App from './App';
 import Team from './Team';
 import Button from 'react-bootstrap/Button';
@@ -8,12 +9,14 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Card from 'react-bootstrap/Card';
 import {
   createBrowserRouter,
   RouterProvider,
   Root,
   Link,
 } from "react-router-dom";
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
 // The search button is not implemented and commented out for simplicity.
 // In the NavBar, the button with dropdown and the disabled button
@@ -30,13 +33,14 @@ function Landing_page() {
   );
 }
 
+
 const router = createBrowserRouter([
   {
    path: "/",
    element: (
      <div>
-       <li><Link to="Recipe">Recipe</Link></li>
-       <li><Link to="Team">Team</Link></li>
+        <Header />
+        <BasicExamples />
      </div>
    ),
  },
@@ -53,21 +57,26 @@ const router = createBrowserRouter([
     },
    ],
  },
-
- {
-   path: "/",
-   children: [
-     {
-       path: "Recipe",
-       element: <App />,
-     },
-    {
-       path: "Team",
-       element: <Team />,
-    },
-   ],
- },
 ]);
+
+function BasicExamples() {
+  return (
+    <div className="recipe-list">
+      <Card className="recipe-summary">
+        <Card.Img variant="top" src="1.jpeg" alt="Salty Crispy Chicken" />
+        <Card.Body>
+          <Card.Title>Salty Crispy Chicken (Salted Fried Chicken)</Card.Title>
+          <Card.Text>
+            The crispy coating is achieved through frying, and the salt seasoning enhances the flavor of the chicken, creating a savory taste. 
+          </Card.Text>
+          <Link to="/Recipe">
+            <Button variant="primary">View Recipe</Button>
+          </Link>
+        </Card.Body>
+      </Card>
+    </div>
+  );
+}
 
 function Navigater() {
     return (
@@ -118,3 +127,14 @@ function Navigater() {
   }
 
 export default Landing_page;
+
+
+
+function Header() {
+  return (
+    <header className="header">
+      <h1>Welcome to the COSI-103A Group T project page!</h1>
+      <p>We are a team of students enrolled in Software Engineering at Brandeis University. This innovative course provides hands-on experience with the entire software development lifecycle.</p>
+    </header>
+  );
+}

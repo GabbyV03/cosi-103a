@@ -1,0 +1,108 @@
+/* General Styles */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 20px;
+  }
+  
+  /* Header Styles */
+  .header {
+    color: #060606;
+    padding: 60px 0;
+    text-align: center;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .header p {
+    font-size: 1.2rem;
+    margin-top: 0;
+  }
+  
+  /* About Section Styles */
+  .about {
+    background: #ffffff;
+    padding: 60px 20px;
+    text-align: center;
+    margin-top: -30px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .about h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .about p {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    background-color: #333;
+    padding: 10px 20px;
+  }
+  
+  .navbar a {
+    color: #000000;
+    font-size: 1rem;
+    text-decoration: none;
+    margin-right: 15px;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .navbar a:hover {
+    color: #b0b0b0;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .header h1 {
+      font-size: 2rem;
+    }
+  
+    .header p {
+      font-size: 1rem;
+    }
+  
+    .about p {
+      font-size: 0.9rem;
+    }
+  }
+  
+/* Recipe Summary Styles */
+.recipe-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .recipe-summary {
+    width: 300px; /* Fixed width for consistency */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Soft shadow for depth */
+    border-radius: 8px; /* Rounded corners for a modern look */
+  }
+  
+  .recipe-summary img {
+    border-top-left-radius: 8px; /* Align with card's rounded corners */
+    border-top-right-radius: 8px;
+  }
+  
+  
