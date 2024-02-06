@@ -63,11 +63,11 @@ function BasicExamples() {
   return (
     <div className="recipe-list">
       <Card className="recipe-summary">
-        <Card.Img variant="top" src="1.jpeg" alt="Salty Crispy Chicken" />
+        <Card.Img variant="top" src="FoodCollage.png" alt="Food Collage" />
         <Card.Body>
-          <Card.Title>Salty Crispy Chicken (Salted Fried Chicken)</Card.Title>
+          <Card.Title>Salty Crispy Chicken, Gyudon, Cheesecake, and more!</Card.Title>
           <Card.Text>
-            The crispy coating is achieved through frying, and the salt seasoning enhances the flavor of the chicken, creating a savory taste. 
+            Click the link below to view the recipes for these delicious dishes! 
           </Card.Text>
           <Link to="/Recipe">
             <Button variant="primary">View Recipe</Button>
