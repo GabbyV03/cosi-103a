@@ -6,7 +6,8 @@ import Navigater from './Landing_page';
 describe('BasicExamples', () => {
   test('renders BasicExamples component', () => {
     render(<BasicExamples />);
-    expect(screen.getByText('Salty Crispy Chicken (Salted Fried Chicken)')).toBeInTheDocument();
+    expect(screen.getByText('Salty Crispy Chicken, Gyudon, Cheesecake, and more!')).toBeInTheDocument();
+    expect(screen.getByText('Click the link below to view the recipes for these delicious dishes!')).toBeInTheDocument();
     expect(screen.getByText('View Recipe')).toBeInTheDocument();
   });
 });
