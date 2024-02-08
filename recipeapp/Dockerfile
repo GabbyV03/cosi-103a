@@ -5,9 +5,9 @@ FROM node:16
 WORKDIR /usr/src/app
 
 # Copy the package.json, src, and public files to the container
-COPY recipeapp/package*.json ./
-COPY recipeapp/src/ ./src
-COPY recipeapp/public/ ./public
+COPY package.json ./package.json   
+COPY src/ ./src
+COPY public/ ./public
 
 # Install the dependencies and start react app on port 3000
 RUN npm install
