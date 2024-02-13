@@ -2,18 +2,37 @@
 import Accordion from 'react-bootstrap/Accordion';
 import './App.css';
 import React from 'react';
+import Form from 'react-bootstrap/Form';
 
-function App() {
+var glista=[];
+var idxcount=0;
+var rtn;
+
+function App(props) {
+  //alert(props.rtnGlist);
+  
+  glista=props.glist;
+  rtn=props.rtnGlist;
   return (
     <div className="App">
       <h1>Best Recipes</h1>
-      <BasicExamples />
+      <BasicExamples glist={glista} rtnGlist={rtn}/>
     </div>
   );
 }
 
+const handleCheck = (event) => {
 
-function BasicExamples() {
+  idxcount= idxcount+1;
+  glista=(current =>[...current,{id:idxcount,g:event.target.value,checked:false}]);
+  
+}
+
+
+
+function BasicExamples(props) {
+glista = props.glist;
+//alert(props.rtnGlist);
   return (
     <Accordion>
       <Accordion.Item eventKey="0">
@@ -31,14 +50,28 @@ function BasicExamples() {
                       3.Heat oil in a pan over medium heat. Dip marinated chicken pieces first in batter, 
                       then deep fry until golden brown and crisp. Drain excess oil on paper towels. Serve immediately.<br />
         Ingredients:<br />
-                     500 grams chicken thighs<br />
-                     1 tablespoon salt<br />
-                     1 teaspoon ground white pepper<br />
-                     1 tablespoon cooking oil<br />
-                    For batter:<br />
-                     1 cup plain flour<br />
-                     1 egg<br />
-                     1 tablespoon water<br />
+                <Form.Check onClick={()=>props.rtnGlist('500 grams chicken thighs')}
+                     label='500 grams chicken thighs'>
+                </Form.Check>
+                <Form.Check onClick={()=>props.rtnGlist('1 tablespoon salt')}
+                     label=' 1 tablespoon salt'>
+                </Form.Check>
+                <Form.Check  onClick={()=>props.rtnGlist('1 teaspoon ground white pepper')}
+                     label=' 1 teaspoon ground white pepper'>
+                </Form.Check>
+                <Form.Check onClick={()=>props.rtnGlist('1 tablespoon cooking oi')}
+                     label=' 1 tablespoon cooking oil'>
+                </Form.Check> 
+                For batter:<br />
+                <Form.Check onClick={()=>props.rtnGlist('1 cup plain flour')}
+                     label=' 1 cup plain flour'>
+                </Form.Check> 
+                <Form.Check onClick={()=>props.rtnGlist('1 egg')}
+                     label=' 1 egg'>
+                </Form.Check> 
+                <Form.Check onClick={()=>props.rtnGlist('1 tablespoon water')}
+                     label=' 1 tablespoon water'>
+                </Form.Check>   
           < img src="1.jpeg"width="300px" height="200px"></img>
         </div>
         </Accordion.Body>
@@ -56,16 +89,36 @@ function BasicExamples() {
                       4.Let cook for 3 to 4 minutes, then ladle into bowls. Garnish with mushrooms and parsley, if desired.<br />
                       3 tablespoons unsalted butter
         Ingredients:<br />
-                      1.2 garlic cloves, minced<br />
-                      2.1 shallot, finely chopped<br />
-                      3.4 ounces crimini mushrooms, chopped<br />
-                      4.4 ounces white button mushrooms, chopped<br />
-                      5.2 tablespoons all-purpose flour<br />
-                      6.3 cups chicken stock<br />
-                      7.¼ teaspoon fine sea salt, or to taste<br />
-                      8.¼ teaspoon ground black pepper, or to taste<br />
-                      9.Sliced sautéed mushrooms for garnish, optional<br />
-                      10.Chopped parsley for garnish, optional<br />
+                <Form.Check onClick={()=>props.rtnGlist('1.2 garlic cloves, minced')}
+                     label=' 1.2 garlic cloves, minced'>
+                </Form.Check>
+                <Form.Check onClick={()=>props.rtnGlist('2.1 shallot, finely chopped')}
+                     label=' 2.1 shallot, finely chopped'>
+                </Form.Check>
+                <Form.Check onClick={()=>props.rtnGlist('3.4 ounces crimini mushrooms, chopped')}
+                     label=' 3.4 ounces crimini mushrooms, chopped'>
+                </Form.Check>
+                <Form.Check onClick={()=>props.rtnGlist('4.4 ounces white button mushrooms, chopped')}
+                     label=' 4.4 ounces white button mushrooms, chopped'>
+                </Form.Check>
+                <Form.Check onClick={()=>props.rtnGlist('5.2 tablespoons all-purpose flour')}
+                     label=' 5.2 tablespoons all-purpose flour '>
+                </Form.Check>
+                <Form.Check onClick={()=>props.rtnGlist('6.3 cups chicken stoc')}
+                     label=' 6.3 cups chicken stock '>
+                </Form.Check>
+                <Form.Check onClick={()=>props.rtnGlist('7.¼ teaspoon fine sea salt')}
+                     label=' 7.¼ teaspoon fine sea salt'>
+                </Form.Check>
+                <Form.Check onClick={()=>props.rtnGlist('8.¼ teaspoon ground black pepper')}
+                     label=' 8.¼ teaspoon ground black pepper'>
+                </Form.Check> 
+                <Form.Check onClick={()=>props.rtnGlist('9.Sliced sautéed mushrooms for garnish, optional')}
+                     label=' 9.Sliced sautéed mushrooms for garnish, optional'>
+                </Form.Check> 
+                <Form.Check onClick={()=>props.rtnGlist('10.Chopped parsley for garnish, optional')}
+                     label=' 10.Chopped parsley for garnish, optional'>
+                </Form.Check>  
         < img src="2.jpeg"width="300px" height="200px"></img>
         </div>
         </Accordion.Body>
@@ -83,12 +136,24 @@ function BasicExamples() {
             3. Add the dashi, soy sauce, mirin, and sugar. Simmer until the sauce thickens.<br />
             4. Serve the beef and onion over a bowl of hot steamed rice.<br />
             Ingredients:<br />
-            300g thinly sliced beef<br />
-            1 onion, thinly sliced<br />
-            1 cup dashi stock<br />
-            3 tablespoons soy sauce<br />
-            3 tablespoons mirin<br />
-            2 tablespoons sugar<br />
+            <Form.Check onClick={()=>props.rtnGlist('300g thinly sliced beef')}
+                     label=' 300g thinly sliced beef '>
+            </Form.Check>
+            <Form.Check onClick={()=>props.rtnGlist('1 onion, thinly sliced ')}
+                     label=' 1 onion, thinly sliced '>
+            </Form.Check>
+            <Form.Check onClick={()=>props.rtnGlist('1 cup dashi stock ')}
+                     label=' 1 cup dashi stock'>
+            </Form.Check>
+            <Form.Check onClick={()=>props.rtnGlist('3 tablespoons soy sauce ')}
+                     label=' 3 tablespoons soy sauce '>
+            </Form.Check>
+            <Form.Check onClick={()=>props.rtnGlist('3 tablespoons mirin ')}
+                     label=' 3 tablespoons mirin '>
+            </Form.Check> 
+            <Form.Check onClick={()=>props.rtnGlist('2 tablespoons sugar ')}
+                     label='2 tablespoons sugar '>
+            </Form.Check>       
             <img src="3.jpeg" width="300px" height="200px" alt="Recipe 3" />
           </div>
         </Accordion.Body>
@@ -106,13 +171,27 @@ function BasicExamples() {
       3. In a small bowl, mix together lemon juice, olive oil, garlic, dill, and honey. Brush mixture over salmon fillets.<br />
       4. Grill salmon for 4-5 minutes per side, or until fish flakes easily with a fork.<br />
       Ingredients:<br />
-      4 salmon fillets<br />
-      Salt and pepper to taste<br />
-      ¼ cup lemon juice<br />
-      2 tablespoons olive oil<br />
-      2 cloves garlic, minced<br />
-      2 tablespoons fresh dill, chopped<br />
-      1 tablespoon honey<br />
+      <Form.Check onClick={()=>props.rtnGlist('4 salmon fillets')}
+          label=' 4 salmon fillets'>
+      </Form.Check> 
+      <Form.Check onClick={()=>props.rtnGlist('Salt and pepper to taste')}
+          label=' Salt and pepper to taste'>
+      </Form.Check>
+      <Form.Check onClick={()=>props.rtnGlist('¼ cup lemon juice')}
+          label='  ¼ cup lemon juice'>
+      </Form.Check> 
+      <Form.Check onClick={()=>props.rtnGlist(' 2 tablespoons olive oil')}
+          label=' 2 tablespoons olive oil'>
+      </Form.Check>  
+      <Form.Check onClick={()=>props.rtnGlist('2 cloves garlic, minced')}
+          label=' 2 cloves garlic, minced'>
+      </Form.Check>    
+      <Form.Check onClick={()=>props.rtnGlist('2 tablespoons fresh dill, chopped')}
+          label=' 2 tablespoons fresh dill, chopped'>
+      </Form.Check> 
+      <Form.Check onClick={()=>props.rtnGlist('1 tablespoon honey')}
+          label=' 1 tablespoon honey'>
+      </Form.Check> 
       <img src="4.jpeg" width="300px" height="200px" alt="Recipe 4" />
     </div>
   </Accordion.Body>
@@ -133,14 +212,30 @@ function BasicExamples() {
             </ol>
             <h2>Ingredients:</h2>
             <ul>
-              <li>1 cup unsalted butter, softened</li>
-              <li>3/4 cup granulated sugar</li>
-              <li>3/4 cup packed brown sugar</li>
-              <li>1 teaspoon vanilla extract</li>
-              <li>2 large eggs</li>
-              <li>2 1/4 cups all-purpose flour</li>
-              <li>1 teaspoon baking soda</li>
-              <li>2 cups semisweet chocolate chips</li>
+            <Form.Check onClick={()=>props.rtnGlist('1 tablespoon honey')}
+               label=' 1 cup unsalted butter, softened'>
+            </Form.Check> 
+            <Form.Check onClick={()=>props.rtnGlist('3/4 cup granulated sugar')}
+               label=' 3/4 cup granulated sugar'>
+            </Form.Check> 
+            <Form.Check onClick={()=>props.rtnGlist('3/4 cup packed brown sugar')}
+               label=' 3/4 cup packed brown sugar'>
+            </Form.Check> 
+            <Form.Check onClick={()=>props.rtnGlist('1 teaspoon vanilla extract')}
+               label=' 1 teaspoon vanilla extract'>
+            </Form.Check> 
+            <Form.Check onClick={()=>props.rtnGlist('2 large eggs')}
+               label=' 2 large eggs'>
+            </Form.Check> 
+            <Form.Check onClick={()=>props.rtnGlist('2 1/4 cups all-purpose flour')}
+               label=' 2 1/4 cups all-purpose flour'>
+            </Form.Check> 
+            <Form.Check onClick={()=>props.rtnGlist('1 teaspoon baking soda')}
+               label=' 1 teaspoon baking soda'>
+            </Form.Check> 
+            <Form.Check onClick={()=>props.rtnGlist('2 cups semisweet chocolate chips')}
+               label=' 2 cups semisweet chocolate chips'>
+            </Form.Check> 
             </ul>
             <img src="cookie.png" style={{width: "300px", height: "200px"}} alt="Chocolate Chip Cookies" />
           </div>
@@ -162,11 +257,21 @@ function BasicExamples() {
             </ol>
             <h2>Ingredients:</h2>
             <ul>
-              <li>225g unsalted butter, softened</li>
-              <li>225g caster sugar</li>
-              <li>4 large eggs</li>
-              <li>225g self-raising flour</li>
-              <li>1 teaspoon baking powder</li>
+            <Form.Check onClick={()=>props.rtnGlist('225g unsalted butter, softened')}
+               label=' 225g unsalted butter, softened'>
+            </Form.Check> 
+            <Form.Check onClick={()=>props.rtnGlist('225g caster sugar')}
+               label=' 225g caster sugar'>
+            </Form.Check> 
+            <Form.Check onClick={()=>props.rtnGlist('4 large eggs')}
+               label=' 4 large eggs'>
+            </Form.Check> 
+            <Form.Check onClick={()=>props.rtnGlist('225g self-raising flour')}
+               label=' 225g self-raising flour'>
+            </Form.Check> 
+            <Form.Check onClick={()=>props.rtnGlist('1 teaspoon baking powder')}
+               label=' 1 teaspoon baking powder'>
+            </Form.Check>
             </ul>
             <img src="lemon_drizzle_cake.png" style={{width: "300px", height: "200px"}} alt="Lemon Drizzle Cake" />
           </div>
@@ -181,16 +286,36 @@ function BasicExamples() {
               simple ingredients, and the cake bakes in a mere 30 minutes.<br />
           <br />
           Ingredients:<br />
-              (Crust)<br />
-              1/2 cups (150g) graham cracker crumbs (about 10 whole crackers, crushed)<br />
-              1/4 cup (28g) confectioners' sugar<br />
-              6 tablespoons (85g) butter, melted <br />
-              1/8 teaspoon table salt<br />
-              (Filling)<br />
-              two 8-ounce packages (452g) cream cheese, at room temperature<br />
-              2/3 cup (133g) granulated sugar<br />
-              2 large eggs, at room temperature<br />
-              1 teaspoon vanilla extract<br />
+          <Form.Check onClick={()=>props.rtnGlist('(Crust)')}
+               label=' (Crust)'>
+          </Form.Check> 
+          <Form.Check onClick={()=>props.rtnGlist('1/2 cups (150g) graham cracker crumbs (about 10 whole crackers, crushed)')}
+               label=' 1/2 cups (150g) graham cracker crumbs (about 10 whole crackers, crushed)'>
+          </Form.Check> 
+          <Form.Check onClick={()=>props.rtnGlist('1/4 cup (28g) confectioners sugar')}
+               label=' 1/4 cup (28g) confectioners sugar'>
+          </Form.Check> 
+          <Form.Check onClick={()=>props.rtnGlist('6 tablespoons (85g) butter, melted')}
+               label=' 6 tablespoons (85g) butter, melted'>
+          </Form.Check> 
+          <Form.Check onClick={()=>props.rtnGlist('1/8 teaspoon table salt')}
+               label=' 1/8 teaspoon table salt'>
+          </Form.Check> 
+          <Form.Check onClick={()=>props.rtnGlist('(Filling)')}
+               label=' (Filling)'>
+          </Form.Check> 
+          <Form.Check onClick={()=>props.rtnGlist(' two 8-ounce packages (452g) cream cheese, at room temperature')}
+               label=' two 8-ounce packages (452g) cream cheese, at room temperature'>
+          </Form.Check> 
+          <Form.Check onClick={()=>props.rtnGlist('2/3 cup (133g) granulated sugar')}
+               label=' 2/3 cup (133g) granulated sugar'>
+          </Form.Check> 
+          <Form.Check onClick={()=>props.rtnGlist('2 large eggs, at room temperature')}
+               label=' 2 large eggs, at room temperature'>
+          </Form.Check>
+          <Form.Check onClick={()=>props.rtnGlist('1 teaspoon vanilla extract')}
+               label=' 1 teaspoon vanilla extract'>
+          </Form.Check>
           <br />
           Instructions:<br />
               1. Preheat the oven to 350°F.<br />
