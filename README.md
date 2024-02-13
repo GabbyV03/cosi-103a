@@ -2,7 +2,7 @@
 
 ## Description
 
-RecipeApp is a web application that allows users to browse through a variety of recipes. Each recipe includes a list of ingredients and step-by-step instructions.
+RecipeApp is a web application that allows users to browse through a variety of recipes. Each recipe includes a list of ingredients and step-by-step instructions. You can also click an ingredient and save it to an editable grocery list.
 
 ## Getting Started with our Recipe App
 
@@ -35,6 +35,7 @@ After starting the application, navigate to http://localhost:3000 in your web br
 
 - Browse through a variety of recipes
 - Each recipe includes a list of ingredients and step-by-step instructions
+- Edit ingredients in your grocery list by checking the box or inputting manually
 - Include our team members
 
 When you load the app, you will see several pages:
