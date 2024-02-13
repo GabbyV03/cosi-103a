@@ -1,5 +1,5 @@
 # Using Image Node.js 16 for long term support (LTS)
-FROM node:16
+FROM node:14
 
 # TO-DO: DOUBLE CHECK THE WORKDIR PATH WHEN TESTING
 WORKDIR /usr/src/app
