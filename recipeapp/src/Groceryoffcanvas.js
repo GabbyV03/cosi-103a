@@ -12,6 +12,7 @@ function Groceryoffcanvas(props){
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
 /*  const initglist = [
     {id:1, g:'one egg',checked: false},
     {id:2, g:'two pple',checked: false},
@@ -38,7 +39,6 @@ function Groceryoffcanvas(props){
     setGglists(current =>[...current,{id:idxcount,g:newg,checked:false}]);
   }
 
-  
   function handleCheck(idx){
     const newgl = gglists.map((element,index)=>{
         if (index=== idx){
@@ -79,10 +79,9 @@ function Groceryoffcanvas(props){
       <Button variant="primary" onClick={handleShow}>
         Grocery List
       </Button>
-
       <Offcanvas show={show} onHide={handleClose} placement ='end'>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+          <Offcanvas.Title>Your Grocery List</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
         {gglists.map((element, index) => {
