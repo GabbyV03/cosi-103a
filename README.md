@@ -33,11 +33,6 @@ After starting the application, navigate to http://localhost:3000 in your web br
 
 ## Pages & Features
 
-- Browse through a variety of recipes
-- Each recipe includes a list of ingredients and step-by-step instructions
-- Edit ingredients in your grocery list by checking the box or inputting manually
-- Include our team members
-
 When you load the app, you will see several pages:
 
 - **Landing Page**: This page displays a summary of our recipes. You can click on the "View Recipe" button to take you to the full recipe page.
@@ -46,6 +41,7 @@ When you load the app, you will see several pages:
 
 - **Team Page**: This page introduces our team members. Each member's profile includes a photo and our name.
 
+- **Grocery List**: It is displayed somewhere on each screen and allows the user to add ingredients to the grocery list, delete individual items or clear the entire list.
 
 ## About us
 
