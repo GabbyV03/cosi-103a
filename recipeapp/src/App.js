@@ -1,8 +1,9 @@
 // import logo from './logo.svg';
 import Accordion from 'react-bootstrap/Accordion';
 import './App.css';
-import React from 'react';
+import React, {useState} from 'react';
 import Form from 'react-bootstrap/Form';
+import CookingMode from './Cookingmode'; 
 
 var glista=[];
 var idxcount=0;
@@ -13,10 +14,58 @@ function App(props) {
   
   glista=props.glist;
   rtn=props.rtnGlist;
+
+  const recipes = [
+     {
+          title: 'Salty Crispy Chicken',
+          instructions: ['Step 1...', 'Step 2...', 'Step 3...']
+     },
+     {
+          title: 'Mushroom Soup',
+          instructions: ['Step 1...', 'Step 2...', 'Step 3...']
+     },
+     {
+          title: 'Gyudon',
+          instructions: ['Step 1...', 'Step 2...', 'Step 3...']
+     },
+     {
+          title: 'Grilled Salmon',
+          instructions: ['Step 1...', 'Step 2...', 'Step 3...']
+     },
+     {
+          title: 'Chocolate Chip Cookies',
+          instructions: ['Step 1...', 'Step 2...', 'Step 3...']
+     },
+     {
+          title: 'Lemon Drizzle Cake',
+          instructions: ['Step 1...', 'Step 2...', 'Step 3...']
+     },
+     {
+          title: 'Cheesecake',
+          instructions: ['Step 1...', 'Step 2...', 'Step 3...']
+     },
+     
+  ];
+
+  const [selectedRecipe, setSelectedRecipe] = useState(null); // Define selectedRecipe state variable
+
+  // Function to handle opening cooking mode
+  const openCookingMode = (recipeTitle) => {
+     const foundRecipe = recipes.find(recipe => recipe.title === recipeTitle);
+     setSelectedRecipe(foundRecipe);
+   };
+
+  // Function to handle closing cooking mode
+  const closeCookingMode = () => {
+     setSelectedRecipe(null);
+   };
+
+
   return (
     <div className="App">
       <h1>Best Recipes</h1>
-      <BasicExamples glist={glista} rtnGlist={rtn}/>
+      <BasicExamples glist={glista} rtnGlist={rtn} recipes={recipes} openCookingMode={openCookingMode} />
+      {selectedRecipe && <CookingMode recipe={selectedRecipe} onClose={closeCookingMode} />}
     </div>
   );
 }
@@ -30,8 +79,11 @@ const handleCheck = (event) => {
 
 
 
-function BasicExamples(props) {
+function BasicExamples(props, recipes, openCookingMode) {
 glista = props.glist;
+openCookingMode= props.openCookingMode;
+
+
 //alert(props.rtnGlist);
   return (
     <Accordion>
@@ -73,6 +125,7 @@ glista = props.glist;
                      label=' 1 tablespoon water'>
                 </Form.Check>   
           < img src="1.jpeg"width="300px" height="200px"></img>
+          <button onClick={() => openCookingMode('Salty Crispy Chicken')}></button>
         </div>
         </Accordion.Body>
       </Accordion.Item>
@@ -120,6 +173,7 @@ glista = props.glist;
                      label=' 10.Chopped parsley for garnish, optional'>
                 </Form.Check>  
         < img src="2.jpeg"width="300px" height="200px"></img>
+        <button onClick={() => openCookingMode('Mushroom Soup')}></button>
         </div>
         </Accordion.Body>
       </Accordion.Item>
@@ -155,6 +209,7 @@ glista = props.glist;
                      label='2 tablespoons sugar '>
             </Form.Check>       
             <img src="3.jpeg" width="300px" height="200px" alt="Recipe 3" />
+            <button onClick={() => openCookingMode('Gyudon')}></button>
           </div>
         </Accordion.Body>
       </Accordion.Item>
@@ -193,6 +248,7 @@ glista = props.glist;
           label=' 1 tablespoon honey'>
       </Form.Check> 
       <img src="4.jpeg" width="300px" height="200px" alt="Recipe 4" />
+      <button onClick={() => openCookingMode('Grilled Salmon')}></button>
     </div>
   </Accordion.Body>
 </Accordion.Item>
@@ -238,6 +294,7 @@ glista = props.glist;
             </Form.Check> 
             </ul>
             <img src="cookie.png" style={{width: "300px", height: "200px"}} alt="Chocolate Chip Cookies" />
+            <button onClick={() => openCookingMode('Chocolate Chip Cookies')}></button>
           </div>
         </Accordion.Body>
      </Accordion.Item>
@@ -274,6 +331,7 @@ glista = props.glist;
             </Form.Check>
             </ul>
             <img src="lemon_drizzle_cake.png" style={{width: "300px", height: "200px"}} alt="Lemon Drizzle Cake" />
+            <button onClick={() => openCookingMode('Lemon Drizzle Cake')}></button>
           </div>
         </Accordion.Body>
       </Accordion.Item>
@@ -331,6 +389,7 @@ glista = props.glist;
               7. Once the cake is cool, refrigerate it, covered, 
               until you're ready to serve it.<br />
           <img src="cheesecake.jpg" width="300px" height="200px" alt=""></img>
+          <button onClick={() => openCookingMode('Cheesecake')}></button>
         </div>
         </Accordion.Body>
       </Accordion.Item>
