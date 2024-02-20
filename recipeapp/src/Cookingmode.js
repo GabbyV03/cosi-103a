@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from 'react-bootstrap';
 import './Cookingmode.css';
 
 function CookingMode({ recipe, onClose }) {
@@ -14,11 +14,11 @@ function CookingMode({ recipe, onClose }) {
       <div className='cooking-mode-container'>
         <h2>{recipe.title}</h2>
         <button onClick={handleCloseCookingMode}>Close Cooking Mode</button>
-        <Carousel>
+        <Carousel showArrows={true} showThumbs={false} controls={true} interval={null}>
           {recipe.instructions.map((instruction, index) => (
-            <div key={index}>
-            {instruction}
-            </div>
+            <Carousel.Item key={index}>
+              <div>{instruction}</div>
+            </Carousel.Item>
           ))}
         </Carousel>
       </div>

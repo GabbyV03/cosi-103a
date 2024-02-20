@@ -22,3 +22,39 @@
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
   z-index: 999; /* Ensure the modal background appears behind the modal content */
 }
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5%;
+  color: #000; /* Change color if needed */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 30px; /* Adjust size if needed */
+  height: 30px; /* Adjust size if needed */
+  background-color: transparent; /* Set background color to transparent */
+}
+
+.carousel-control-prev-icon:before,
+.carousel-control-next-icon:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-top: .3em solid;
+  border-right: .3em solid;
+  border-color: currentColor; /* Use current text color for arrows */
+}
+
+.carousel-control-prev {
+  left: 0;
+}
+
+.carousel-control-next {
+  right: 0;
+}
