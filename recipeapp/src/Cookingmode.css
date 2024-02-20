@@ -30,13 +30,14 @@
   transform: translateY(-50%);
   width: 5%;
   color: #000; /* Change color if needed */
+  z-index: 1001;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   width: 30px; /* Adjust size if needed */
   height: 30px; /* Adjust size if needed */
-  background-color: transparent; /* Set background color to transparent */
+  background-color: #000; /* Set background color to transparent */
 }
 
 .carousel-control-prev-icon:before,
