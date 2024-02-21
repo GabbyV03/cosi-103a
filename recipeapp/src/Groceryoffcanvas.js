@@ -79,7 +79,7 @@ function Groceryoffcanvas(props){
       <Button variant="primary" onClick={handleShow}>
         Grocery List
       </Button>
-      <Offcanvas show={show} onHide={handleClose} placement ='end'>
+      <Offcanvas show={show} onHide={handleClose} placement ='end' scroll={true} backdrop={false}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Your Grocery List</Offcanvas.Title>
         </Offcanvas.Header>

@@ -17,7 +17,9 @@ function CookingMode({ recipe, onClose }) {
         <Carousel showArrows={true} showThumbs={false} controls={true} interval={null}>
           {recipe.instructions.map((instruction, index) => (
             <Carousel.Item key={index}>
-              <div>{instruction}</div>
+              <div>{recipe.steps[index]}</div>
+              <br></br>
+              <div><h3>{instruction}</h3></div>
             </Carousel.Item>
           ))}
         </Carousel>
