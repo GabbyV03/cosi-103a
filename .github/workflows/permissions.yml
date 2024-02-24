@@ -13,7 +13,7 @@ jobs:
   deploy-infra:
     name: Deploy Infra
     runs-on: windows-latest
-    environment: production
+    environment: dev
     steps:
       - name: Log into Azure
         uses: azure/login@v1
