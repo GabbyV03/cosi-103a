@@ -1,27 +1,35 @@
 import React from 'react';
+import { useState } from 'react';
 import { Carousel } from 'react-bootstrap';
 import './Cookingmode.css';
 
+const CustomPrevIcon = () => <span className="carousel-control-prev-arrow">❮</span>;
+const CustomNextIcon = () => <span className="carousel-control-next-arrow">❯</span>;
+
+
 function CookingMode({ recipe, onClose }) {
+  const [currentStep, setCurrentStep] = useState(0);
 
   const handleCloseCookingMode = () => {
     onClose();
   };
 
+  const handleSelect = (selectedIndex, e) => {
+    setCurrentStep(selectedIndex);
+  };
+
   return (
-    <div>
-      <div className="modal-background"></div>
+    <div className="modal-background">
       <div className='cooking-mode-container'>
         <h2>{recipe.title}</h2>
         <button onClick={handleCloseCookingMode}>Close Cooking Mode</button>
-        <Carousel showArrows={true} showThumbs={false} controls={true} interval={null}>
+        <progress className="progress-bar" value={currentStep + 1} max={recipe.instructions.length}></progress>
+        <Carousel activeIndex={currentStep} onSelect={handleSelect} prevIcon={<CustomPrevIcon />} nextIcon={<CustomNextIcon />}>
           {recipe.instructions.map((instruction, index) => (
             <Carousel.Item key={index}>
-              <div>{recipe.steps[index]}</div>
-              <br></br>
-              <div><h3>{instruction}</h3></div>
+              <div><h3 className="instruction-style">{instruction}</h3></div>
             </Carousel.Item>
-          ))}
+            ))}
         </Carousel>
       </div>
     </div>
