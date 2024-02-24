@@ -1,0 +1,89 @@
+/* CookingMode.css */
+
+/* The cooking mode container is centered on the screen and has a white background */
+.cooking-mode-container {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff; /* White background */
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 1000; /* Ensure the modal appears above other content */
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(253, 253, 253, 0.5); /* Semi-transparent black background */
+  z-index: 999; /* Ensure the modal background appears behind the modal content */
+}
+
+/* The following part is the style of the arrow in each side of the page */
+.carousel-control-prev-arrow,
+.carousel-control-next-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #626262; /* Change to black for better visibility */
+  z-index: 1001; /* Ensure the controls appear above other content */
+  font-size: 70px; /* Adjust as needed */
+  cursor: pointer; /* Indicates that the arrow is clickable */
+}
+
+.carousel-control-prev-arrow {
+  left: 20px; /* Position the left arrow 20px from the left edge */
+}
+
+.carousel-control-next-arrow {
+  right: 20px; /* Position the right arrow 20px from the right edge */
+}
+
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  background-color: #9b999d; /* Example: change the arrow color to black */
+  border-radius: 50%; /* Example: make the arrows circular */
+}
+
+/* The following part is the style of the progress bar */
+.progress-bar {
+  position: absolute;
+  bottom: 20px; /* Align it with the bottom of its container */
+  left: 50%; /* Center it horizontally */
+  transform: translate(-50%, -100%); /* Adjust for centering and positioning above the bottom */
+  height: 10px; /* Adjust as needed */
+  width: 50%; /* Adjust the width as per your requirement */
+  background-color: rgb(208, 206, 206); /* Adjust as needed */
+  border-radius: 5px; /* Adjust as needed */
+  z-index: 1002; /* Ensure it's above other content but below the controls */
+}
+
+.progress-bar[value]::-webkit-progress-bar {
+  background-color: #f3f3f3;
+}
+
+.progress-bar[value]::-webkit-progress-value {
+  background-color: #4CAF50; /* Green background */
+}
+
+.progress-bar[value]::-moz-progress-bar {
+  background-color: #4CAF50; /* Green background */
+}
+
+/* The following part is the style of the text */
+.instruction-style {
+  display: flex;
+  color: rgb(7, 7, 7);
+  text-align: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  max-height:600px; /* Ensure the content fits within the container */
+  overflow-y: auto; /* Add a scrollbar if the content overflows */
+  padding: 20px;
+  font: 8em sans-serif;
+}
