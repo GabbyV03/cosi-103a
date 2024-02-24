@@ -43,6 +43,8 @@ When you load the app, you will see several pages:
 
 - **Grocery List**: It is displayed somewhere on each screen and allows the user to add ingredients to the grocery list, delete individual items or clear the entire list.
 
+- **Cooking Mode**: Each recipe has a link to the mobile-friendly "Cooking Mode" page, which displays the instructions in a kitchen-friendly way, shows only the recipe's instructions, and the instructions take up the entire screen in a large font.
+
 ## About us
 
 Qiping Zhang: qipingzhang@brandeis.edu
