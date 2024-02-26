@@ -12,9 +12,11 @@ permissions:
 jobs: 
   deploy-infra:
     name: Deploy Infra
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     environment: dev
     steps:
+      - uses: actions/checkout@v3
+      
       - name: Log into Azure
         uses: azure/login@v1
         with:
@@ -22,7 +24,15 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           
-      - name: 'Run az commands'
+      - name: Run az commands
         run: |
           az account show
           az group list
+
+      - name: Build and deploy Container App
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: recipeapp
+          acrName: recipeapp103
+          containerAppName: recipeapp103
+          resourceGroup: cosi-103
