@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
+      - uses: actions/checkout@v3
+      
       - name: Log into Azure
         uses: azure/login@v1
         with:
@@ -27,23 +29,10 @@ jobs:
           az account show
           az group list
 
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      
-      - name: Log into Azure
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-
       - name: Build and deploy Container App
         uses: azure/container-apps-deploy-action@v1
         with:
-          appSourcePath: ${{ github.workspace }}/recipeapp/src
+          appSourcePath: recipeapp/src
           acrName: recipeapp103
           containerAppName: recipeapp103
           resourceGroup: cosi-103
