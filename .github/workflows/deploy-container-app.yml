@@ -32,7 +32,7 @@ jobs:
       - name: Build and deploy Container App
         uses: azure/container-apps-deploy-action@v1
         with:
-          appSourcePath: recipeapp/src
+          appSourcePath: recipeapp
           acrName: recipeapp103
           containerAppName: recipeapp103
           resourceGroup: cosi-103
