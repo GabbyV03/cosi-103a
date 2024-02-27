@@ -29,6 +29,8 @@ describe('CookingMode Component', () => {
 
     // Check if the first instruction is rendered
     expect(screen.getByText(mockRecipe.instructions[0])).toBeInTheDocument();
+    // Check if the second instruction is rendered
+    expect(screen.getByText(mockRecipe.instructions[1])).toBeInTheDocument();
   });
 
 
@@ -40,20 +42,6 @@ describe('CookingMode Component', () => {
 
     // Check if the onClose function is called
     expect(onCloseMock).toHaveBeenCalledTimes(1);
-  });
-
-  // Parts commented out: not working because fail to click the next arrow in the carousel
-  it('handles carousel navigation', () => {
-    render(<CookingMode recipe={mockRecipe} onClose={onCloseMock} />);
-
-  //   // Click the next arrow in the carousel
-  //   screen.getByClassName('next-button').click();
-  //   // not working: screen.getByRole('button', { name: '❯' }).click();
-
-  //   // Check if the progress bar is updated
-  //   const progressBar = screen.getByRole('progressbar');
-  //   expect(progressBar).toHaveValue(2);
-
   });
 
 });
