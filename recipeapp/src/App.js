@@ -5,15 +5,8 @@ import React, {useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import CookingMode from './Cookingmode';
 
-var glista=[];
-var idxcount=0;
-var rtn;
 
 function App(props) {
-  //alert(props.rtnGlist);
-  
-  glista=props.glist;
-  rtn=props.rtnGlist;
 
   const recipes = [
      {
@@ -71,23 +64,14 @@ function App(props) {
   return (
     <div className="App">
       <h1>Best Recipes</h1>
-      <BasicExamples glist={glista} rtnGlist={rtn} recipes={recipes} openCookingMode={openCookingMode} />
+      <BasicExamples recipes={recipes} openCookingMode={openCookingMode} />
       {selectedRecipe && <CookingMode recipe={selectedRecipe} onClose={closeCookingMode} />}
     </div>
   );
 }
 
-const handleCheck = (event) => {
-
-  idxcount= idxcount+1;
-  glista=(current =>[...current,{id:idxcount,g:event.target.value,checked:false}]);
-  
-}
-
-
 
 function BasicExamples(props, recipes, openCookingMode) {
-glista = props.glist;
 openCookingMode= props.openCookingMode;
 
 
@@ -102,35 +86,21 @@ openCookingMode= props.openCookingMode;
                       The crispy coating is achieved through frying, and the salt seasoning enhances
                       the flavor of the chicken, creating a savory taste.<br />
                       Different cuisines may have their own variations of salty crispy chicken,
-                      incorporating unique spices, herbs, or cooking techniques. <br /><br />
+                      incorporating unique spices, herbs, or cooking techniques. <br />
         Procedure:<br />
                       1.Cut chicken into pieces. Mix seasonings with chicken. Marinate for at least an hour.<br />
                       2.Combine ingredients for batter. Set aside.<br />
                       3.Heat oil in a pan over medium heat. Dip marinated chicken pieces first in batter, 
                       then deep fry until golden brown and crisp. Drain excess oil on paper towels. Serve immediately.<br />
-        Ingredients:<br />
-                <Form.Check onClick={()=>props.rtnGlist('500 grams chicken thighs')}
-                     label='500 grams chicken thighs'>
-                </Form.Check>
-                <Form.Check onClick={()=>props.rtnGlist('1 tablespoon salt')}
-                     label=' 1 tablespoon salt'>
-                </Form.Check>
-                <Form.Check  onClick={()=>props.rtnGlist('1 teaspoon ground white pepper')}
-                     label=' 1 teaspoon ground white pepper'>
-                </Form.Check>
-                <Form.Check onClick={()=>props.rtnGlist('1 tablespoon cooking oi')}
-                     label=' 1 tablespoon cooking oil'>
-                </Form.Check> 
-                For batter:<br />
-                <Form.Check onClick={()=>props.rtnGlist('1 cup plain flour')}
-                     label=' 1 cup plain flour'>
-                </Form.Check> 
-                <Form.Check onClick={()=>props.rtnGlist('1 egg')}
-                     label=' 1 egg'>
-                </Form.Check> 
-                <Form.Check onClick={()=>props.rtnGlist('1 tablespoon water')}
-                     label=' 1 tablespoon water'>
-                </Form.Check>   
+                      Ingredients:<br />
+                     500 grams chicken thighs<br />
+                     1 tablespoon salt<br />
+                     1 teaspoon ground white pepper<br />
+                     1 tablespoon cooking oil<br />
+                    For batter:<br />
+                     1 cup plain flour<br />
+                     1 egg<br />
+                     1 tablespoon water<br />  
           < img src="1.jpeg"width="300px" height="200px"></img>
           <button onClick={() => openCookingMode('Salty Crispy Chicken')}> cooking mode </button>
         </div>
@@ -141,44 +111,25 @@ openCookingMode= props.openCookingMode;
         <Accordion.Body>
         <div align="left">
         Description:<br />
-                      1. This creamy mushroom soup is made with three types of mushrooms and chicken stock.<br />
+                      This creamy mushroom soup is made with three types of mushrooms and chicken stock.<br />
         Procedure:<br />
                       1.Melt 2 tablespoons of the butter in a large pot such as a Dutch oven over medium-high heat. Add the garlic and shallot, cook for 1 minute, until they begin to soften. Add the mushrooms and cook for about 3 minutes, until tender and browned. Transfer all the contents of the pot to a bowl.<br />
                       2.Add the remaining 1 tablespoon of butter to the pot. Once melted, sprinkle in the flour and whisk it quickly into a paste. Reduce the heat to medium. Add the stock a little at a time, whisking out the clumps between each addition.<br />
                       3.Increase the heat back to medium-high and allow the soup to simmer well for 3 minutes. Add the mushrooms back to the pot and continue to cook for 2 more minutes. The stock will thicken slightly to be somewhat creamy.<br />
                       4.Let cook for 3 to 4 minutes, then ladle into bowls. Garnish with mushrooms and parsley, if desired.<br />
-                      3 tablespoons unsalted butter
-        Ingredients:<br />
-                <Form.Check onClick={()=>props.rtnGlist('1.2 garlic cloves, minced')}
-                     label=' 1.2 garlic cloves, minced'>
-                </Form.Check>
-                <Form.Check onClick={()=>props.rtnGlist('2.1 shallot, finely chopped')}
-                     label=' 2.1 shallot, finely chopped'>
-                </Form.Check>
-                <Form.Check onClick={()=>props.rtnGlist('3.4 ounces crimini mushrooms, chopped')}
-                     label=' 3.4 ounces crimini mushrooms, chopped'>
-                </Form.Check>
-                <Form.Check onClick={()=>props.rtnGlist('4.4 ounces white button mushrooms, chopped')}
-                     label=' 4.4 ounces white button mushrooms, chopped'>
-                </Form.Check>
-                <Form.Check onClick={()=>props.rtnGlist('5.2 tablespoons all-purpose flour')}
-                     label=' 5.2 tablespoons all-purpose flour '>
-                </Form.Check>
-                <Form.Check onClick={()=>props.rtnGlist('6.3 cups chicken stoc')}
-                     label=' 6.3 cups chicken stock '>
-                </Form.Check>
-                <Form.Check onClick={()=>props.rtnGlist('7.¼ teaspoon fine sea salt')}
-                     label=' 7.¼ teaspoon fine sea salt'>
-                </Form.Check>
-                <Form.Check onClick={()=>props.rtnGlist('8.¼ teaspoon ground black pepper')}
-                     label=' 8.¼ teaspoon ground black pepper'>
-                </Form.Check> 
-                <Form.Check onClick={()=>props.rtnGlist('9.Sliced sautéed mushrooms for garnish, optional')}
-                     label=' 9.Sliced sautéed mushrooms for garnish, optional'>
-                </Form.Check> 
-                <Form.Check onClick={()=>props.rtnGlist('10.Chopped parsley for garnish, optional')}
-                     label=' 10.Chopped parsley for garnish, optional'>
-                </Form.Check>  
+                      
+                      Ingredients:<br />
+                      3 tablespoons unsalted butter<br />
+                      2 garlic cloves, minced<br />
+                      1 shallot, finely chopped<br />
+                      4 ounces crimini mushrooms, chopped<br />
+                      4 ounces white button mushrooms, chopped<br />
+                      2 tablespoons all-purpose flour<br />
+                      3 cups chicken stock<br />
+                      ¼ teaspoon fine sea salt, or to taste<br />
+                      ¼ teaspoon ground black pepper, or to taste<br />
+                      Sliced sautéed mushrooms for garnish, optional<br />
+                      Chopped parsley for garnish, optional<br />
         < img src="2.jpeg"width="300px" height="200px"></img>
         <button onClick={() => openCookingMode('Mushroom Soup')}> cooking mode </button>
         </div>
@@ -197,24 +148,12 @@ openCookingMode= props.openCookingMode;
             3. Add the dashi, soy sauce, mirin, and sugar. Simmer until the sauce thickens.<br />
             4. Serve the beef and onion over a bowl of hot steamed rice.<br />
             Ingredients:<br />
-            <Form.Check onClick={()=>props.rtnGlist('300g thinly sliced beef')}
-                     label=' 300g thinly sliced beef '>
-            </Form.Check>
-            <Form.Check onClick={()=>props.rtnGlist('1 onion, thinly sliced ')}
-                     label=' 1 onion, thinly sliced '>
-            </Form.Check>
-            <Form.Check onClick={()=>props.rtnGlist('1 cup dashi stock ')}
-                     label=' 1 cup dashi stock'>
-            </Form.Check>
-            <Form.Check onClick={()=>props.rtnGlist('3 tablespoons soy sauce ')}
-                     label=' 3 tablespoons soy sauce '>
-            </Form.Check>
-            <Form.Check onClick={()=>props.rtnGlist('3 tablespoons mirin ')}
-                     label=' 3 tablespoons mirin '>
-            </Form.Check> 
-            <Form.Check onClick={()=>props.rtnGlist('2 tablespoons sugar ')}
-                     label='2 tablespoons sugar '>
-            </Form.Check>       
+            300g thinly sliced beef<br />
+            1 onion, thinly sliced<br />
+            1 cup dashi stock<br />
+            3 tablespoons soy sauce<br />
+            3 tablespoons mirin<br />
+            2 tablespoons sugar<br />       
             <img src="3.jpeg" width="300px" height="200px" alt="Recipe 3" />
             <button onClick={() => openCookingMode('Gyudon')}> cooking mode </button>
           </div>
@@ -233,27 +172,13 @@ openCookingMode= props.openCookingMode;
       3. In a small bowl, mix together lemon juice, olive oil, garlic, dill, and honey. Brush mixture over salmon fillets.<br />
       4. Grill salmon for 4-5 minutes per side, or until fish flakes easily with a fork.<br />
       Ingredients:<br />
-      <Form.Check onClick={()=>props.rtnGlist('4 salmon fillets')}
-          label=' 4 salmon fillets'>
-      </Form.Check> 
-      <Form.Check onClick={()=>props.rtnGlist('Salt and pepper to taste')}
-          label=' Salt and pepper to taste'>
-      </Form.Check>
-      <Form.Check onClick={()=>props.rtnGlist('¼ cup lemon juice')}
-          label='  ¼ cup lemon juice'>
-      </Form.Check> 
-      <Form.Check onClick={()=>props.rtnGlist(' 2 tablespoons olive oil')}
-          label=' 2 tablespoons olive oil'>
-      </Form.Check>  
-      <Form.Check onClick={()=>props.rtnGlist('2 cloves garlic, minced')}
-          label=' 2 cloves garlic, minced'>
-      </Form.Check>    
-      <Form.Check onClick={()=>props.rtnGlist('2 tablespoons fresh dill, chopped')}
-          label=' 2 tablespoons fresh dill, chopped'>
-      </Form.Check> 
-      <Form.Check onClick={()=>props.rtnGlist('1 tablespoon honey')}
-          label=' 1 tablespoon honey'>
-      </Form.Check> 
+      4 salmon fillets<br />
+      Salt and pepper to taste<br />
+      ¼ cup lemon juice<br />
+      2 tablespoons olive oil<br />
+      2 cloves garlic, minced<br />
+      2 tablespoons fresh dill, chopped<br />
+      1 tablespoon honey<br />
       <img src="4.jpeg" width="300px" height="200px" alt="Recipe 4" />
       <button onClick={() => openCookingMode('Grilled Salmon')}> cooking mode </button>
     </div>
@@ -275,30 +200,14 @@ openCookingMode= props.openCookingMode;
             </ol>
             <h2>Ingredients:</h2>
             <ul>
-            <Form.Check onClick={()=>props.rtnGlist('1 tablespoon honey')}
-               label=' 1 cup unsalted butter, softened'>
-            </Form.Check> 
-            <Form.Check onClick={()=>props.rtnGlist('3/4 cup granulated sugar')}
-               label=' 3/4 cup granulated sugar'>
-            </Form.Check> 
-            <Form.Check onClick={()=>props.rtnGlist('3/4 cup packed brown sugar')}
-               label=' 3/4 cup packed brown sugar'>
-            </Form.Check> 
-            <Form.Check onClick={()=>props.rtnGlist('1 teaspoon vanilla extract')}
-               label=' 1 teaspoon vanilla extract'>
-            </Form.Check> 
-            <Form.Check onClick={()=>props.rtnGlist('2 large eggs')}
-               label=' 2 large eggs'>
-            </Form.Check> 
-            <Form.Check onClick={()=>props.rtnGlist('2 1/4 cups all-purpose flour')}
-               label=' 2 1/4 cups all-purpose flour'>
-            </Form.Check> 
-            <Form.Check onClick={()=>props.rtnGlist('1 teaspoon baking soda')}
-               label=' 1 teaspoon baking soda'>
-            </Form.Check> 
-            <Form.Check onClick={()=>props.rtnGlist('2 cups semisweet chocolate chips')}
-               label=' 2 cups semisweet chocolate chips'>
-            </Form.Check> 
+              <li>1 cup unsalted butter, softened</li>
+              <li>3/4 cup granulated sugar</li>
+              <li>3/4 cup packed brown sugar</li>
+              <li>1 teaspoon vanilla extract</li>
+              <li>2 large eggs</li>
+              <li>2 1/4 cups all-purpose flour</li>
+              <li>1 teaspoon baking soda</li>
+              <li>2 cups semisweet chocolate chips</li>
             </ul>
             <img src="cookie.png" style={{width: "300px", height: "200px"}} alt="Chocolate Chip Cookies" />
             <button onClick={() => openCookingMode('Chocolate Chip Cookies')}> cooking mode </button>
@@ -321,21 +230,11 @@ openCookingMode= props.openCookingMode;
             </ol>
             <h2>Ingredients:</h2>
             <ul>
-            <Form.Check onClick={()=>props.rtnGlist('225g unsalted butter, softened')}
-               label=' 225g unsalted butter, softened'>
-            </Form.Check> 
-            <Form.Check onClick={()=>props.rtnGlist('225g caster sugar')}
-               label=' 225g caster sugar'>
-            </Form.Check> 
-            <Form.Check onClick={()=>props.rtnGlist('4 large eggs')}
-               label=' 4 large eggs'>
-            </Form.Check> 
-            <Form.Check onClick={()=>props.rtnGlist('225g self-raising flour')}
-               label=' 225g self-raising flour'>
-            </Form.Check> 
-            <Form.Check onClick={()=>props.rtnGlist('1 teaspoon baking powder')}
-               label=' 1 teaspoon baking powder'>
-            </Form.Check>
+              <li>225g unsalted butter, softened</li>
+              <li>225g caster sugar</li>
+              <li>4 large eggs</li>
+              <li>225g self-raising flour</li>
+              <li>1 teaspoon baking powder</li>
             </ul>
             <img src="lemon_drizzle_cake.png" style={{width: "300px", height: "200px"}} alt="Lemon Drizzle Cake" />
             <br /><button onClick={() => openCookingMode('Lemon Drizzle Cake')}> cooking mode </button>
@@ -351,36 +250,16 @@ openCookingMode= props.openCookingMode;
               simple ingredients, and the cake bakes in a mere 30 minutes.<br />
           <br />
           Ingredients:<br />
-          <Form.Check onClick={()=>props.rtnGlist('(Crust)')}
-               label=' (Crust)'>
-          </Form.Check> 
-          <Form.Check onClick={()=>props.rtnGlist('1/2 cups (150g) graham cracker crumbs (about 10 whole crackers, crushed)')}
-               label=' 1/2 cups (150g) graham cracker crumbs (about 10 whole crackers, crushed)'>
-          </Form.Check> 
-          <Form.Check onClick={()=>props.rtnGlist('1/4 cup (28g) confectioners sugar')}
-               label=' 1/4 cup (28g) confectioners sugar'>
-          </Form.Check> 
-          <Form.Check onClick={()=>props.rtnGlist('6 tablespoons (85g) butter, melted')}
-               label=' 6 tablespoons (85g) butter, melted'>
-          </Form.Check> 
-          <Form.Check onClick={()=>props.rtnGlist('1/8 teaspoon table salt')}
-               label=' 1/8 teaspoon table salt'>
-          </Form.Check> 
-          <Form.Check onClick={()=>props.rtnGlist('(Filling)')}
-               label=' (Filling)'>
-          </Form.Check> 
-          <Form.Check onClick={()=>props.rtnGlist(' two 8-ounce packages (452g) cream cheese, at room temperature')}
-               label=' two 8-ounce packages (452g) cream cheese, at room temperature'>
-          </Form.Check> 
-          <Form.Check onClick={()=>props.rtnGlist('2/3 cup (133g) granulated sugar')}
-               label=' 2/3 cup (133g) granulated sugar'>
-          </Form.Check> 
-          <Form.Check onClick={()=>props.rtnGlist('2 large eggs, at room temperature')}
-               label=' 2 large eggs, at room temperature'>
-          </Form.Check>
-          <Form.Check onClick={()=>props.rtnGlist('1 teaspoon vanilla extract')}
-               label=' 1 teaspoon vanilla extract'>
-          </Form.Check>
+              (Crust)<br />
+              1/2 cups (150g) graham cracker crumbs (about 10 whole crackers, crushed)<br />
+              1/4 cup (28g) confectioners' sugar<br />
+              6 tablespoons (85g) butter, melted <br />
+              1/8 teaspoon table salt<br />
+              (Filling)<br />
+              two 8-ounce packages (452g) cream cheese, at room temperature<br />
+              2/3 cup (133g) granulated sugar<br />
+              2 large eggs, at room temperature<br />
+              1 teaspoon vanilla extract<br />
           <br />
           Instructions:<br />
               1. Preheat the oven to 350°F.<br />
