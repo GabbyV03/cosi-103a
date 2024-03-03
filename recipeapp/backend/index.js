@@ -45,7 +45,7 @@ app.post('/api/recipes', (req, res) => {
   res.status(201).json(newRecipe);
 });
 
-// start express server on port 5000
-app.listen(5000, () => {
-  console.log("server started on port 5000");
+// start express server on port 8000
+app.listen(8000, () => {
+  console.log("server started on port 8000");
 });
