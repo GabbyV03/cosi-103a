@@ -23,9 +23,9 @@ function CookingMode({ recipe, onClose }) {
       <div className='cooking-mode-container'>
         <h2>{recipe.title}</h2>
         <button onClick={handleCloseCookingMode}>Close Cooking Mode</button>
-        <progress className="progress-bar" value={currentStep + 1} max={recipe.instructions.length}></progress>
+        <progress className="progress-bar" value={currentStep + 1} max={recipe.steps.length}></progress>
         <Carousel activeIndex={currentStep} onSelect={handleSelect} prevIcon={<CustomPrevIcon />} nextIcon={<CustomNextIcon />}>
-          {recipe.instructions.map((instruction, index) => (
+          {recipe.steps.map((instruction, index) => (
             <Carousel.Item key={index}>
               <div><h3 className="instruction-style">{instruction}</h3></div>
             </Carousel.Item>
