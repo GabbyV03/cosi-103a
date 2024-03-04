@@ -16,8 +16,8 @@ COPY . .
 # Build the React client
 RUN npm run build
 
-# Expose port 5000 for the Express server
-EXPOSE 5000
+# Expose port 8000 for the Express server
+EXPOSE 8000
 
 # Start the Express server when the container starts
 CMD ["npm", "start"]
