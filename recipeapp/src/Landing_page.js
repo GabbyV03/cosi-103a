@@ -1,14 +1,11 @@
 import './landingpage.css';
-import Accordion from 'react-bootstrap/Accordion';
 import App from './App';
 import Team from './Team';
 import Button from 'react-bootstrap/Button';
 import React from 'react';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Groceryoffcanvas from './Groceryoffcanvas';
 import Card from 'react-bootstrap/Card';
 import { useState,useEffect } from 'react';
@@ -20,23 +17,7 @@ import {
 } from "react-router-dom";
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
-// The search button is not implemented and commented out for simplicity.
-// In the NavBar, the button with dropdown and the disabled button
-// are also not implemented and kept in the comments for reference.
-
-var iglist;
-var rtn;
-
 function Landing_page(props) {
-iglist=props.glist;
-rtn=props.rtnGlist;
-const [tp, setTp] = useState(0);
-
-const handleAddnew=(str)=>{
-  props.rtnGlist(str);
-  setTp(tp+1);
-  //setGglists(current=>[...props.glist]);
-}
 
 const router = createBrowserRouter([
   {
@@ -53,7 +34,7 @@ const router = createBrowserRouter([
    children: [
      {
        path: "Recipe",
-       element: <App glist={iglist} rtnGlist={handleAddnew}/>,
+       element: <App/>,
      },
     {
        path: "Team",
@@ -63,12 +44,11 @@ const router = createBrowserRouter([
  },
 ]);
 
-//alert(rtn);
   return (
     <div className="Landing_page">
       <Navigater />
       <RouterProvider router={router}/>
-      <Groceryoffcanvas tp={tp} glist={iglist}/>
+      <Groceryoffcanvas/>
     </div>
   );
 }
@@ -109,31 +89,7 @@ function Navigater() {
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="Recipe">Recipe</Nav.Link>
                 <Nav.Link href="Team">Team</Nav.Link>
-                {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
-                  <NavDropdown.Item href="#action4">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action5">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action6">
-                    Something else here
-                  </NavDropdown.Item>
-                </NavDropdown> */}
-                {/* <Nav.Link href="#" disabled>
-                  Link
-                </Nav.Link> */}
               </Nav>
-
-              {/* <Form className="d-flex">
-                <Form.Control
-                  type="search"
-                  placeholder="Search"
-                  className="me-2"
-                  aria-label="Search"
-                />
-                <Button variant="outline-success">Search</Button>
-              </Form> */}
-
             </Navbar.Collapse>
           </Container>
         </Navbar>

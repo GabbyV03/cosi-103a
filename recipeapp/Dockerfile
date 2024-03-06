@@ -1,15 +1,23 @@
-# Using Image Node.js 16 for long term support (LTS)
+# Use the official Node.js image as base
 FROM node:14
 
-# TO-DO: DOUBLE CHECK THE WORKDIR PATH WHEN TESTING
-WORKDIR /usr/src/app
+# Set the working directory inside the container
+WORKDIR /app
 
-# Copy the package.json, src, and public files to the container
-COPY package.json ./package.json   
-COPY src/ ./src
-COPY public/ ./public
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
 
-# Install the dependencies and start react app on port 3000
+# Install dependencies for both client and server
 RUN npm install
-EXPOSE 3000
+
+# Copy the entire client and server codebase to the container
+COPY . .
+
+# Build the React client
+RUN npm run build
+
+# Expose port 8000 for the Express server
+EXPOSE 8000
+
+# Start the Express server when the container starts
 CMD ["npm", "start"]
