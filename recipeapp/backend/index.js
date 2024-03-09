@@ -66,6 +66,7 @@ app.get('/api/recipes', (req, res) => {
 
 // Route to add a new recipe
 app.post('/api/recipes', (req, res) => {
+  console.log(req.body);
   const { name, ingredients, steps } = req.body;
   if (!name || !ingredients || !steps || !Array.isArray(ingredients) || !Array.isArray(steps)) {
       return res.status(400).json({ message: 'Invalid request. Name, ingredients, and steps are required.' });

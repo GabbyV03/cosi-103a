@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import CookingMode from './Cookingmode';
+import { Button } from 'react-bootstrap';
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -34,6 +35,58 @@ function App() {
     setSelectedRecipe(null);
   };
 
+  const  [newrp,setNewrp] = useState("");
+  const handleTextChange = (event) => {  
+    setNewrp(event.target.value);  
+  }; 
+  const addnewrp=()=>{
+    //alert(newrp);
+    console.log(newrp);
+    let jsonObject;
+    //alert(jsonObject);
+    try {  
+      jsonObject = JSON.parse(newrp);  
+      //alert(newrp);
+      //alert(jsonObject);
+        } catch (error) {  
+      console.error('Error parsing JSON:', error);  
+      jsonObject = null;  
+    }  
+    if (jsonObject!== null){
+        //alert(jsonObject);
+        setRecipes([...recipes,jsonObject]);
+        /*fetch('/api/recipes', {  
+          method: 'POST',  
+          headers: {  
+            'Content-Type': 'application/json',  
+          },  
+          body: JSON.stringify(jsonObject), 
+        })  
+        //.then(response => response.json())  
+        //.then(data => console.log(data))  
+        .catch((error) => {  
+          console.error('Error:', error);  
+        })*/
+        //alert(JSON.stringify(recipes,null,2));
+   } 
+    
+        
+  }
+  /*const addRp =()=>{
+    let jsonObject;  
+    try {  
+       jsonObject = JSON.parse(newrp);  
+    } catch (error) {  
+      console.error('Error parsing JSON:', error);  
+      jsonObject = null; // 或者设置为其他默认值  
+    }  
+    if (jsonObject!== null){
+       alert(jsonObject);
+      //setData([...data,jsonObject]);
+    }
+    //addItem(newrp);
+    //addRpItem(newrp);
+}*/  
   return (
     <div className="App">
       <h1>Best Recipes</h1>
@@ -62,8 +115,15 @@ function App() {
           </Accordion.Item>
         ))}
       </Accordion>
+      <div>
+        <br />
+        <p><strong>Would you like to add new recipe?&nbsp;&nbsp;&nbsp;</strong><Button onClick={addnewrp}>add new recipe</Button>
+        <br /></p>
+        <textarea value={newrp} rows={4} cols={150} onChange={handleTextChange}></textarea><br />
+        <br />            
+      </div>
       {selectedRecipe && <CookingMode recipe={selectedRecipe} onClose={closeCookingMode} />}
-    </div>
+      </div>
   );
 }
 
