@@ -35,6 +35,7 @@ function App() {
     setSelectedRecipe(null);
   };
 
+  // Enable the user to add new recipes
   const  [newrp,setNewrp] = useState("");
   const handleTextChange = (event) => {  
     setNewrp(event.target.value);  
@@ -90,7 +91,7 @@ function App() {
        jsonObject = JSON.parse(newrp);  
     } catch (error) {  
       console.error('Error parsing JSON:', error);  
-      jsonObject = null; // 或者设置为其他默认值  
+      jsonObject = null; // or set to other default values 或者设置为其他默认值  
     }  
     if (jsonObject!== null){
        alert(jsonObject);
@@ -99,6 +100,8 @@ function App() {
     //addItem(newrp);
     //addRpItem(newrp);
 }*/  
+
+  // Display recipe page
   return (
     <div className="App">
       <h1>Best Recipes</h1>
