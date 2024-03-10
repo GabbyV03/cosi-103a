@@ -63,6 +63,8 @@ app.get('/api/recipes', (req, res) => {
   res.json(recipes);
 });
 
+const bodyParser = require('body-parser'); 
+app.use(bodyParser.json());
 
 // Route to add a new recipe
 app.post('/api/recipes', (req, res) => {
@@ -71,6 +73,8 @@ app.post('/api/recipes', (req, res) => {
   if (!name || !ingredients || !steps || !Array.isArray(ingredients) || !Array.isArray(steps)) {
       return res.status(400).json({ message: 'Invalid request. Name, ingredients, and steps are required.' });
   }
+  //const rp = req.body;
+  //console.log(rp.name);
 
   const placeholderImageUrl = '/images/placeholder.png';
 

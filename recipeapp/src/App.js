@@ -54,19 +54,31 @@ function App() {
     }  
     if (jsonObject!== null){
         //alert(jsonObject);
-        setRecipes([...recipes,jsonObject]);
-        /*fetch('/api/recipes', {  
+        
+        const { name, ingredients, steps ,imageUrl } = jsonObject;
+        const newRecipe = {
+          id: recipes.length + 1,
+          name,
+          ingredients,
+          steps,
+          imageUrl
+    
+          };
+          //recipes.push(newRecipe);
+        setRecipes([...recipes,newRecipe]);
+        fetch('/api/recipes', {  
           method: 'POST',  
           headers: {  
             'Content-Type': 'application/json',  
           },  
-          body: JSON.stringify(jsonObject), 
+          body: newrp, 
         })  
         //.then(response => response.json())  
         //.then(data => console.log(data))  
         .catch((error) => {  
           console.error('Error:', error);  
-        })*/
+        })
+        console.log('send ok');
         //alert(JSON.stringify(recipes,null,2));
    } 
     
