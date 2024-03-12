@@ -2,7 +2,7 @@
 
 ## Description
 
-RecipeApp is a web application that allows users to browse through a variety of recipes. Each recipe includes a list of ingredients and step-by-step instructions. You can also click an ingredient and save it to an editable grocery list.
+RecipeApp is a web application that allows users to browse through a variety of recipes. Each recipe includes a list of ingredients and step-by-step instructions. You can also save ingredients to an editable grocery list.
 
 ## Getting Started with our Recipe App
 
@@ -22,7 +22,11 @@ Install the dependencies.
 
 ### `npm start`
 
-Start the application.
+Start the production server ran on an Express server, and builds the static file folder at 8000 (locahost:8000)
+
+### 'npm run start-client'
+
+Start the development server at 3000, proxied to 8000 (localhost:3000)
 
 ### `npm test`
 
@@ -37,7 +41,7 @@ When you load the app, you will see several pages:
 
 - **Landing Page**: This page displays a summary of our recipes. You can click on the "View Recipe" button to take you to the full recipe page.
 
-- **Recipe Page**: This page displays the full recipes. Each recipe includes a list of ingredients and step-by-step instructions as well as a helpful image!
+- **Recipe Page**: This page displays the full recipes. Each recipe includes a list of ingredients and step-by-step instructions as well as a helpful image! You also have the ability to add a recipe using JSON format!
 
 - **Team Page**: This page introduces our team members. Each member's profile includes a photo and our name.
 
