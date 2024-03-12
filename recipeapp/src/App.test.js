@@ -1,6 +1,11 @@
 // App.test.js
-import { render, screen, waitFor,} from '@testing-library/react';
+import { render, screen, waitFor} from '@testing-library/react';
 import App from './App';
+
+// imported for testing the form
+import React from 'react';
+import { fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
 beforeEach(() => {
   // Mock fetch
@@ -33,3 +38,34 @@ test('renders recipes correctly', async () => {
     expect(screen.getByText('Step 1')).toBeInTheDocument();
   });
 });
+
+// Test the form to add new recipe
+test('adds a new recipe and makes API call', async () => {
+  // Mock the fetch function to simulate the API call
+  global.fetch = jest.fn().mockResolvedValue({
+    ok: true,
+    json: () => Promise.resolve({ message: 'Recipe added successfully' }),
+  });
+
+  render(<App />);
+
+  // Add a new recipe
+  fireEvent.change(screen.getByRole('textbox'), { target: { value: '{"name": "New Recipe", "ingredients": ["Ingredient1", "Ingredient2"], "steps": ["Step1", "Step2"], "imageUrl": "example.com/image.jpg"}' } });
+  fireEvent.click(screen.getByRole('button', { name: 'add new recipe' }));
+
+  // Wait for the API call to be made
+  await waitFor(() => expect(global.fetch).toHaveBeenCalledWith('/api/recipes', expect.objectContaining({
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: '{"name": "New Recipe", "ingredients": ["Ingredient1", "Ingredient2"], "steps": ["Step1", "Step2"], "imageUrl": "example.com/image.jpg"}',
+  })));
+
+  // Verify that the new recipe is added to the UI
+  expect(screen.getByText('New Recipe')).toBeInTheDocument();
+  expect(screen.getByText('Ingredient1')).toBeInTheDocument();
+  expect(screen.getByText('Step1')).toBeInTheDocument();
+
+  // Clean up
+  global.fetch.mockClear();
+});
+
