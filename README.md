@@ -2,7 +2,7 @@
 
 ## Description
 
-RecipeApp is a web application that allows users to browse through a variety of recipes. Each recipe includes a list of ingredients and step-by-step instructions. You can also click an ingredient and save it to an editable grocery list.
+RecipeApp is a web application that allows users to browse through a variety of recipes. Each recipe includes a list of ingredients and step-by-step instructions. You can also add new recipes, or enter ingredients into your grocery list.
 
 ## Getting Started with our Recipe App
 
@@ -29,11 +29,11 @@ Start the application.
 Launches the test runner if needed
 
 ### Usage
-After starting the application, navigate to http://localhost:3000 in your web browser. You can browse through the recipes by clicking on the recipe names in the navigation bar.
+After starting the application, you can browse through the recipes, pages, and utilize the features including a grocery list, a "Cooking Mode", and a form to add new recipes.
 
 ## Pages & Features
 
-When you load the app, you will see several pages:
+When you load the app, you will can navigate to several pages using the navigation bar:
 
 - **Landing Page**: This page displays a summary of our recipes. You can click on the "View Recipe" button to take you to the full recipe page.
 
@@ -44,6 +44,9 @@ When you load the app, you will see several pages:
 - **Grocery List**: It is displayed somewhere on each screen and allows the user to add ingredients to the grocery list, delete individual items or clear the entire list.
 
 - **Cooking Mode**: Each recipe has a link to the mobile-friendly "Cooking Mode" page, which displays the instructions in a kitchen-friendly way, shows only the recipe's instructions, and the instructions take up the entire screen in a large font.
+
+- **Add New Recipes**: On the recipe page, you can find a text box for you to enter a recipe in JSON format.
+For example, if you enter {"name": "Your Recipe Name", "ingredients": ["Ingredient1", "Ingredient2"], "steps": ["Step1", "Step2"], "imageUrl": "SourceOfYourImage.com/image.jpg"}, then your recipe titled "Your Recipe Name" will be visible across all users in the list of recipes!
 
 ## About us
 
