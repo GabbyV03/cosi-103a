@@ -16,6 +16,7 @@ import {
   Link,
 } from "react-router-dom";
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { throttle } from 'lodash';
 
 function Landing_page(props) {
 
@@ -112,18 +113,30 @@ function IngredientSearch() {
   const [query, setQuery] = useState(''); // State for the search query
   const [result, setResult] = useState(null); // State for the search result URL
   const [error, setError] = useState(''); // State for any error message
+  const [cache, setCache] = useState({});
 
+  
   const searchIngredients = async () => {
+    if (cache[query]) {
+      setResult(cache[query]);
+      setError('');
+      return;
+    }
+
     const url = `/api/ingredients/search?q=${encodeURIComponent(query)}`;
     try {
       const response = await fetch(url);
       if (!response.ok) {
-        console.error('Response Status:', response.status);
-        throw new Error('Server responded with an error');
+        if (response.status === 429) {
+          throw new Error('Rate limit exceeded. Please try again after an hour.');
+        } else {
+          throw new Error('Server responded with an error');
+        }
       }
       const data = await response.json();
       setResult(data.url); // Extract the URL from the JSON response
       setError('');
+      setCache(prevCache => ({ ...prevCache, [query]: data.url }));
     } catch (error) {
       console.error('Error fetching ingredient data:', error);
       console.error('Error details:', error.message);
@@ -131,6 +144,7 @@ function IngredientSearch() {
       setResult(null);
     }
   };
+  const throttledSearch = throttle(searchIngredients, 1000); 
 
   return (
     <div className="ingredient-search">
@@ -141,7 +155,7 @@ function IngredientSearch() {
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search for ingredients"
         />
-        <Button onClick={searchIngredients} variant="primary">Search</Button>
+        <Button onClick={throttledSearch} variant="primary">Search</Button>
       </div>
   
       {result && (
@@ -150,7 +164,7 @@ function IngredientSearch() {
           </div>
         )}
       {error && (
-        <div className="search-error">{error}</div>
+        <div style={{ display: 'flex', justifyContent: 'center' }} className="search-error">{error}</div>
       )}
     </div>
   );

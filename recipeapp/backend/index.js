@@ -114,8 +114,8 @@ app.get('/api/ingredients/search', async (req, res) => {
       res.status(404).json({ message: 'No results found' });
     }
   } catch (error) {
-    console.error('Error searching ingredient1:', error);
-    res.status(500).json({ message: 'Error searching ingredient2' });
+    console.error('Error searching ingredient:', error);
+    res.status(500).json({ message: 'Error searching ingredient' });
   }
 });
 
