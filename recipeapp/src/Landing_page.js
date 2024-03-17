@@ -26,6 +26,7 @@ const router = createBrowserRouter([
      <div>
         <Header />
         <BasicExamples />
+        <IngredientSearch /> 
      </div>
    ),
  },
@@ -97,9 +98,6 @@ function Navigater() {
       );
   }
 
-export default Landing_page;
-
-
 
 function Header() {
   return (
@@ -109,3 +107,53 @@ function Header() {
     </header>
   );
 }
+
+function IngredientSearch() {
+  const [query, setQuery] = useState(''); // State for the search query
+  const [result, setResult] = useState(null); // State for the search result URL
+  const [error, setError] = useState(''); // State for any error message
+
+  const searchIngredients = async () => {
+    const url = `/api/ingredients/search?q=${encodeURIComponent(query)}`;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        console.error('Response Status:', response.status);
+        throw new Error('Server responded with an error');
+      }
+      const data = await response.json();
+      setResult(data.url); // Extract the URL from the JSON response
+      setError('');
+    } catch (error) {
+      console.error('Error fetching ingredient data:', error);
+      console.error('Error details:', error.message);
+      setError('Error searching ingredient');
+      setResult(null);
+    }
+  };
+
+  return (
+    <div className="ingredient-search">
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search for ingredients"
+        />
+        <Button onClick={searchIngredients} variant="primary">Search</Button>
+      </div>
+  
+      {result && (
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <a href={result} target="_blank" rel="noopener noreferrer">View Nutrient Details</a>
+          </div>
+        )}
+      {error && (
+        <div className="search-error">{error}</div>
+      )}
+    </div>
+  );
+      }
+
+export default Landing_page;

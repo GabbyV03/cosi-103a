@@ -1,5 +1,6 @@
 const path = require("path");
 const express = require("express");
+const fetch = require("node-fetch");
 const app = express(); // create express app
 
 app.use('/images', express.static(path.join(__dirname, "images")));
@@ -91,6 +92,33 @@ app.post('/api/recipes', (req, res) => {
 });
 
 
+// Route for ingredient search
+app.get('/api/ingredients/search', async (req, res) => {
+  const query = req.query.q;
+  //const FOOD_DATA_API_KEY = process.env.REACT_APP_NUTRITION_API_KEY;
+  const FOOD_DATA_API_KEY = 's28QNO0niy9zMeWXZQ3ReV7NSiI6LPtG81MnzkAf';
+  const url = `https://api.nal.usda.gov/fdc/v1/foods/search?query=${encodeURIComponent(query)}&api_key=${FOOD_DATA_API_KEY}`;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    
+    if (data.foods && data.foods.length > 0) {
+      const fdcId = data.foods[0].fdcId;
+      const foodDetailsUrl = `https://fdc.nal.usda.gov/fdc-app.html#/food-details/${fdcId}/nutrients`;
+      res.json({ url: foodDetailsUrl });
+    } else {
+      res.status(404).json({ message: 'No results found' });
+    }
+  } catch (error) {
+    console.error('Error searching ingredient1:', error);
+    res.status(500).json({ message: 'Error searching ingredient2' });
+  }
+});
+
 // add middlewares
 app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));
@@ -99,6 +127,7 @@ app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
 
+app.use(express.json()); // To parse JSON body in POST requests
 
 // start express server on port 8000
 app.listen(8000, () => {
