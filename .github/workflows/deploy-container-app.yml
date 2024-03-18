@@ -38,3 +38,6 @@ jobs:
           acrName: recipeapp103
           containerAppName: recipeapp103
           resourceGroup: cosi-103
+        env:
+          API_KEY: ${{ secrets.NUTRITION_API_KEY }}
+        
