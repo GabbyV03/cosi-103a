@@ -104,5 +104,23 @@ body {
     border-top-left-radius: 8px; /* Align with card's rounded corners */
     border-top-right-radius: 8px;
   }
+
+    input {  
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: all 0.3s ease; 
+  }  
   
-  
+  input.highlighted {  
+    border: 2px solid rgba(8, 60, 163, 0.619); 
+    background-color: rgb(238, 250, 255);
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 145, 255, 0.7);
+  }  
+    
+  input.highlighted:focus {  
+    outline: none;
+    border-color: rgba(0, 82, 204, 0.988);
+    box-shadow: 0 0 15px rgba(34, 148, 255, 0.524);
+  }

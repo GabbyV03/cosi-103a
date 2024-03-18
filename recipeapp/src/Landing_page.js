@@ -16,6 +16,7 @@ import {
   Link,
 } from "react-router-dom";
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { throttle } from 'lodash';
 
 function Landing_page(props) {
 
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
      <div>
         <Header />
         <BasicExamples />
+        <IngredientSearch /> 
      </div>
    ),
  },
@@ -97,9 +99,6 @@ function Navigater() {
       );
   }
 
-export default Landing_page;
-
-
 
 function Header() {
   return (
@@ -109,3 +108,70 @@ function Header() {
     </header>
   );
 }
+
+function IngredientSearch() {
+  const [query, setQuery] = useState(''); // State for the search query
+  const [result, setResult] = useState(null); // State for the search result URL
+  const [error, setError] = useState(''); // State for any error message
+  const [cache, setCache] = useState({});
+
+  
+  const searchIngredients = async () => {
+    if (cache[query]) {
+      setResult(cache[query]);
+      setError('');
+      return;
+    }
+
+    const url = `/api/ingredients/search?q=${encodeURIComponent(query)}`;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        if (response.status === 429) {
+          throw new Error('Rate limit exceeded. Please try again after an hour.');
+        } else {
+          throw new Error('Server responded with an error');
+        }
+      }
+      const data = await response.json();
+      setResult(data.url); // Extract the URL from the JSON response
+      setError('');
+      setCache(prevCache => ({ ...prevCache, [query]: data.url }));
+    } catch (error) {
+      console.error('Error fetching ingredient data:', error);
+      console.error('Error details:', error.message);
+      setError('Error searching ingredient');
+      setResult(null);
+    }
+  };
+  const throttledSearch = throttle(searchIngredients, 1000); 
+
+  return (
+    <div className="ingredient-search">
+    <br/>
+    <br/>
+      <div style={{display: 'flex', flexDirection: 'row', justifyContent:'center' }}>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input class="highlighted" 
+          type="text"
+          size="40"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search for ingredients"
+        />&nbsp;&nbsp;&nbsp;&nbsp;
+        <Button onClick={throttledSearch} variant="outline-info">Search</Button>
+      </div>
+  
+      {result && (
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <a href={result} target="_blank" rel="noopener noreferrer">View Nutrient Details</a>
+          </div>
+        )}
+      {error && (
+        <div style={{ display: 'flex', justifyContent: 'center' }} className="search-error">{error}</div>
+      )}
+    </div>
+  );
+      }
+
+export default Landing_page;

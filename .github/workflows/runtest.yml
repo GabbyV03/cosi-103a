@@ -20,8 +20,12 @@ jobs:
         run: |
           cd recipeapp
           npm i
+        env:
+          API_KEY: ${{ secrets.REACT_APP_NUTRITION_API_KEY }}
 
       - name: Run Tests
         run: |
           cd recipeapp
           npm test
+        env:
+          API_KEY: ${{ secrets.REACT_APP_NUTRITION_API_KEY }}
