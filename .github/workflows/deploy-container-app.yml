@@ -29,7 +29,7 @@ jobs:
           az account show
           az group list
         env:
-          API_KEY: ${{ secrets.REACT_APP_NUTRITION_API_KEY }}
+          API_KEY: ${{ secrets.NUTRITION_API_KEY }}
 
       - name: Build and deploy Container App
         uses: azure/container-apps-deploy-action@v1
