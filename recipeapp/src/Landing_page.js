@@ -148,14 +148,18 @@ function IngredientSearch() {
 
   return (
     <div className="ingredient-search">
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <input
+    <br/>
+    <br/>
+      <div style={{display: 'flex', flexDirection: 'row', justifyContent:'center' }}>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input class="highlighted" 
           type="text"
+          size="40"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search for ingredients"
-        />
-        <Button onClick={throttledSearch} variant="primary">Search</Button>
+        />&nbsp;&nbsp;&nbsp;&nbsp;
+        <Button onClick={throttledSearch} variant="outline-info">Search</Button>
       </div>
   
       {result && (
