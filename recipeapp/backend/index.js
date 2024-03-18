@@ -95,8 +95,9 @@ app.post('/api/recipes', (req, res) => {
 // Route for ingredient search
 app.get('/api/ingredients/search', async (req, res) => {
   const query = req.query.q;
-  //const FOOD_DATA_API_KEY = process.env.REACT_APP_NUTRITION_API_KEY;
-  const FOOD_DATA_API_KEY = 's28QNO0niy9zMeWXZQ3ReV7NSiI6LPtG81MnzkAf';
+  const FOOD_DATA_API_KEY = process.env.REACT_APP_NUTRITION_API_KEY;
+  //for codespace testing:
+  //const FOOD_DATA_API_KEY = 's28QNO0niy9zMeWXZQ3ReV7NSiI6LPtG81MnzkAf'; 
   const url = `https://api.nal.usda.gov/fdc/v1/foods/search?query=${encodeURIComponent(query)}&api_key=${FOOD_DATA_API_KEY}`;
 
   try {
