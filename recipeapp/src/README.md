@@ -9,3 +9,10 @@ To run development server on port 3000 (allows hot-reloading on client-side code
 
 In order to use/call the external api key when developing, use 'process.env.NUTRITION_API_KEY'
 
+## Important for Database Integration
+
+Database Endpoint url: https://recipeapp-groupt.documents.azure.com:443/
+databaseName = 103a-recipeapp
+containerName = recipeapp-container
+
+
