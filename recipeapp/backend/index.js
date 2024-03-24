@@ -10,7 +10,7 @@ const containerName = 'recipeapp-container';
 //Authenticate to CosmoDB 
 const cosmosClient = new CosmosClient({
   endpoint,
-  credential: new DefaultAzureCredential()
+  aadCredentials: new DefaultAzureCredential()
 });
 
 const app = express(); // create express app
@@ -73,8 +73,10 @@ let recipes = [
 //RESTful RECIPES API (To be fixed/checked once implemented in React App)
 
 // Route to get all recipes
-app.get('/api/recipes', (req, res) => {
-  res.json(recipes);
+app.get('/api/recipes', async (req, res) => {
+  const container  = cosmosClient.database(databaseName).container(containerName);
+  const { resource } = await container.items.readAll().fetchAll();
+  res.send(resource);
 });
 
 const bodyParser = require('body-parser'); 
