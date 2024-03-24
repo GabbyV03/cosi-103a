@@ -73,7 +73,7 @@ let recipes = [
 //RESTful RECIPES API (To be fixed/checked once implemented in React App)
 
 // Route to get all recipes
-app.get('/api/recipes', async (req, res) => {
+app.get('/api/recipes', (req, res) => {
   res.json(recipes);
 });
 
