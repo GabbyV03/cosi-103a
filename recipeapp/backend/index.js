@@ -10,7 +10,7 @@ const containerName = 'recipeapp-container';
 //Authenticate to CosmoDB 
 const cosmosClient = new CosmosClient({
   endpoint,
-  addCredentials: new DefaultAzureCredential()
+  credential: new DefaultAzureCredential()
 });
 
 const app = express(); // create express app
