@@ -1,7 +1,20 @@
 const path = require("path");
 const express = require("express");
 const fetch = require("node-fetch");
+const { DefaultAzureCredential } = require("@azure/identity");
+const { CosmosClient } = require("@azure/cosmos");
+const endpoint = 'https://recipeapp-groupt.documents.azure.com:443/'
+const databaseName = '103a-recipeapp';
+const containerName = 'recipeapp-container';
+
+//Authenticate to CosmoDB 
+const cosmosClient = new CosmosClient({
+  endpoint,
+  addCredentials: new DefaultAzureCredential()
+});
+
 const app = express(); // create express app
+
 
 app.use('/images', express.static(path.join(__dirname, "images")));
 // recipes in-memory storage initial recipes, keep id number for future use 
@@ -60,7 +73,7 @@ let recipes = [
 //RESTful RECIPES API (To be fixed/checked once implemented in React App)
 
 // Route to get all recipes
-app.get('/api/recipes', (req, res) => {
+app.get('/api/recipes', async (req, res) => {
   res.json(recipes);
 });
 
