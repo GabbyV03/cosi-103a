@@ -9,3 +9,21 @@ To run development server on port 3000 (allows hot-reloading on client-side code
 
 In order to use/call the external api key when developing, use 'process.env.NUTRITION_API_KEY'
 
+## Important for Database Integration
+
+Database Endpoint url: https://recipeapp-groupt.documents.azure.com:443/
+databaseName = 103a-recipeapp
+containerName = recipeapp-container
+
+##If Developing in Codespaces 
+
+You have to run:
+sudo su root
+curl -L https://aka.ms/InstallAzureCli | sudo bash
+in order to install Azure CLI and make sure to restart the shell
+
+once done installing run:
+az login --use-device-code and follow the instructions to authenticate
+
+
+
