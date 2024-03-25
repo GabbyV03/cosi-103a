@@ -15,4 +15,15 @@ Database Endpoint url: https://recipeapp-groupt.documents.azure.com:443/
 databaseName = 103a-recipeapp
 containerName = recipeapp-container
 
+##If Developing in Codespaces 
+
+You have to run:
+sudo su root
+curl -L https://aka.ms/InstallAzureCli | sudo bash
+in order to install Azure CLI and make sure to restart the shell
+
+once done installing run:
+az login --use-device-code and follow the instructions to authenticate
+
+
 
