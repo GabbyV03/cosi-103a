@@ -30,27 +30,36 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 // Route to add a new recipe
-app.post('/api/recipes', (req, res) => {
+app.post('/api/recipes', async (req, res) => {
   console.log(req.body);
   const { name, ingredients, steps } = req.body;
+
+  // Validate request body
   if (!name || !ingredients || !steps || !Array.isArray(ingredients) || !Array.isArray(steps)) {
       return res.status(400).json({ message: 'Invalid request. Name, ingredients, and steps are required.' });
   }
-  //const rp = req.body;
-  //console.log(rp.name);
 
-  const placeholderImageUrl = '/images/placeholder.png';
+  try {
+      // Create a new recipe object
+      const recipe = {
+          recipe_id: Math.random().toString(36).substring(7), // Generate a unique recipe_id
+          name,
+          ingredients,
+          steps,
+          imageUrl: "/images/placeholder.png"
+      };
 
-  const newRecipe = {
-      id: recipes.length + 1,
-      name,
-      ingredients,
-      steps,
-      imageUrl: placeholderImageUrl
-      
-  };
-  recipes.push(newRecipe);
-  res.status(201).json(newRecipe);
+      // Add the recipe to Cosmos DB
+      const { resource: createdRecipe } = await cosmosClient
+          .database(databaseName)
+          .container(containerName)
+          .items.create(recipe);
+
+      res.status(201).json(createdRecipe);
+  } catch (error) {
+      console.error("Error adding recipe to Cosmos DB:", error);
+      res.status(500).json({ message: 'Internal server error.' });
+  }
 });
 
 
