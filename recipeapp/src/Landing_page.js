@@ -20,6 +20,7 @@ import { throttle } from 'lodash';
 
 function Landing_page(props) {
 
+// Create a browser router with defined routes
 const router = createBrowserRouter([
   {
    path: "/",
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
   );
 }
 
-
+// Render a card with a recipe summary and a link to the recipe page
 function BasicExamples() {
   return (
     <div className="recipe-list">
@@ -75,6 +76,7 @@ function BasicExamples() {
   );
 }
 
+// Render the navigation bar with links to different pages
 function Navigater() {
     return (
       <div>
@@ -100,6 +102,7 @@ function Navigater() {
   }
 
 
+// Render the header section with a welcome message
 function Header() {
   return (
     <header className="header">
@@ -115,14 +118,14 @@ function IngredientSearch() {
   const [error, setError] = useState(''); // State for any error message
   const [cache, setCache] = useState({});
 
-  
+  // Check if the result is already cached
   const searchIngredients = async () => {
     if (cache[query]) {
       setResult(cache[query]);
       setError('');
       return;
     }
-
+    // Perform the ingredient search API call
     const url = `/api/ingredients/search?q=${encodeURIComponent(query)}`;
     try {
       const response = await fetch(url);
@@ -144,8 +147,11 @@ function IngredientSearch() {
       setResult(null);
     }
   };
+  // Throttle the search function to limit the rate of API calls
   const throttledSearch = throttle(searchIngredients, 1000); 
 
+
+  // Style of the search bar
   return (
     <div className="ingredient-search">
     <br/>

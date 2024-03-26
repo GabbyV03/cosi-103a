@@ -6,7 +6,7 @@ import './Cookingmode.css';
 const CustomPrevIcon = () => <span className="carousel-control-prev-arrow">❮</span>;
 const CustomNextIcon = () => <span className="carousel-control-next-arrow">❯</span>;
 
-
+//displays the cooking mode interface
 function CookingMode({ recipe, onClose }) {
   const [currentStep, setCurrentStep] = useState(0);
 

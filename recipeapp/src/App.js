@@ -85,21 +85,6 @@ function App() {
     
         
   }
-  /*const addRp =()=>{
-    let jsonObject;  
-    try {  
-       jsonObject = JSON.parse(newrp);  
-    } catch (error) {  
-      console.error('Error parsing JSON:', error);  
-      jsonObject = null; // or set to other default values 或者设置为其他默认值  
-    }  
-    if (jsonObject!== null){
-       alert(jsonObject);
-      //setData([...data,jsonObject]);
-    }
-    //addItem(newrp);
-    //addRpItem(newrp);
-}*/  
 
   // Display recipe page
   return (

@@ -1,31 +1,48 @@
 name: run-tests
+
 on: [pull_request]
 
 jobs:
   run-tests:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-      - name: List Repository Contents
-        run: ls -la
+    - name: List Repository Contents
+      run: ls -la
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
 
-      - name: Install Dependencies
-        run: |
-          cd recipeapp
-          npm i
-        env:
-          NUTRITION_API_KEY: ${{ secrets.NUTRITION_API_KEY }}
+    - name: Install Frontend Dependencies
+      run: |
+        cd recipeapp
+        npm i
+      env:
+        NUTRITION_API_KEY: ${{ secrets.NUTRITION_API_KEY }}
 
-      - name: Run Tests
-        run: |
-          cd recipeapp
-          npm test
-        env:
-          NUTRITION_API_KEY: ${{ secrets.NUTRITION_API_KEY }}
+    - name: Run Frontend Tests
+      run: |
+        cd recipeapp
+        npm test
+      env:
+        NUTRITION_API_KEY: ${{ secrets.NUTRITION_API_KEY }}
+
+    - name: Install Backend Dependencies
+      run: |
+        cd recipeapp/backend
+        npm i
+
+    - name: Run Backend Tests
+      run: |
+        cd recipeapp/backend
+        npm test
+      env:
+        NUTRITION_API_KEY: ${{ secrets.NUTRITION_API_KEY }}
+        COSMOS_ENDPOINT: ${{ secrets.COSMOS_ENDPOINT }}
+        COSMOS_DATABASE: ${{ secrets.COSMOS_DATABASE }}
+        COSMOS_CONTAINER: ${{ secrets.COSMOS_CONTAINER }}

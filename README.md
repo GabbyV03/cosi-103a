@@ -45,7 +45,7 @@ When you load the app, you will can navigate to several pages using the navigati
 
 - **Cooking Mode**: Each recipe has a link to the mobile-friendly "Cooking Mode" page, which displays the instructions in a kitchen-friendly way, shows only the recipe's instructions, and the instructions take up the entire screen in a large font.
 
-- **Add New Recipes**: On the recipe page, you can find a text box for you to enter a recipe in JSON format. <br/> For example, if you enter {"name": "Your Recipe Name", "ingredients": ["Ingredient1", "Ingredient2"], "steps": ["Step1", "Step2"], "imageUrl": "SourceOfYourImage.com/image.jpg"}, then your recipe titled "Your Recipe Name" will be visible across all users in the list of recipes!
+- **Add New Recipes**: On the recipe page, you can find a text box for you to enter a recipe in JSON format. <br/> For example, if you enter {"name": "Your Recipe Name", "ingredients": ["Ingredient1", "Ingredient2"], "steps": ["Step1", "Step2"], "imageUrl": "SourceOfYourImage.com/image.jpg"}, then your recipe titled "Your Recipe Name" will be visible across all users in the list of recipes! (Added recipes are persist)
 
 ## Azure Alerts
 
