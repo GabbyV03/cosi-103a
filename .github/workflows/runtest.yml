@@ -32,15 +32,15 @@ jobs:
       
       - name: Install Backend Dependencies
         run: |
-          cd backend
+          cd recipeapp/backend
           npm ci
         
-          - name: Run Backend Tests
-          run: |
-            cd backend
-            npm test
-          env:
-            NUTRITION_API_KEY: ${{ secrets.NUTRITION_API_KEY }}
-            COSMOS_ENDPOINT: ${{ secrets.COSMOS_ENDPOINT }}
-            COSMOS_DATABASE: ${{ secrets.COSMOS_DATABASE }}
-            COSMOS_CONTAINER: ${{ secrets.COSMOS_CONTAINER }}
+      - name: Run Backend Tests
+        run: |
+          cd recipeapp/backend
+          npm test
+        env:
+          NUTRITION_API_KEY: ${{ secrets.NUTRITION_API_KEY }}
+          COSMOS_ENDPOINT: ${{ secrets.COSMOS_ENDPOINT }}
+          COSMOS_DATABASE: ${{ secrets.COSMOS_DATABASE }}
+          COSMOS_CONTAINER: ${{ secrets.COSMOS_CONTAINER }}
