@@ -149,7 +149,11 @@ return (
     <Accordion>
       {recipes.map((recipe, index) => (
         <Accordion.Item key={index} eventKey={index.toString()}>
-          <Accordion.Header>{recipe.name}</Accordion.Header>
+          <Accordion.Header>
+            {recipe.name}
+            <Button variant="secondary" onClick={() => handleEdit(recipe)}>Edit</Button>
+            <Button variant="danger" onClick={() => handleDelete(recipe.id)}>Delete</Button> 
+          </Accordion.Header>
           <Accordion.Body>
             <div align="left">
               <h2>Ingredients:</h2>
