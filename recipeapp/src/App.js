@@ -151,8 +151,8 @@ return (
         <Accordion.Item key={index} eventKey={index.toString()}>
           <Accordion.Header>
             {recipe.name}
-            <Button variant="secondary" onClick={() => handleEdit(recipe)}>Edit</Button>
-            <Button variant="danger" onClick={() => handleDelete(recipe.id)}>Delete</Button> 
+            <Button variant="secondary" onClick={() => handleEditRecipe(recipe)}>Edit</Button>
+            <Button variant="danger" onClick={() => handleDeleteRecipe(recipe.id)}>Delete</Button> 
           </Accordion.Header>
           <Accordion.Body>
             <div align="left">
