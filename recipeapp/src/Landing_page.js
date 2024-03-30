@@ -18,6 +18,7 @@ import {
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import { throttle } from 'lodash';
 
+
 function Landing_page(props) {
 
 // Create a browser router with defined routes
