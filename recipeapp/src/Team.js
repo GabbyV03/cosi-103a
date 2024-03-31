@@ -32,9 +32,9 @@ function GroupExample() {
       </Card>
 
       <Card className="card-custom">
-        <Card.Img variant="top" src="headshot/person4.png" alt="Yao Sun :)" className="card-img-top"/>
+        <Card.Img variant="top" src="headshot/person4.png" alt="Yao Sun:)" className="card-img-top"/>
         <Card.Body>
-          <Card.Title>Yao Sun</Card.Title>
+          <Card.Title>Yao Sun:)</Card.Title>
         </Card.Body>
       </Card>
     </CardGroup>
