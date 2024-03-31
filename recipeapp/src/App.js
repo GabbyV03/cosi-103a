@@ -142,50 +142,50 @@ function App() {
   }
 
   // Display recipe page
-  // Display recipe page
 return (
   <div className="App">
     <h1>Best Recipes</h1>
     <Accordion>
-      {recipes.map((recipe, index) => (
-        <Accordion.Item key={index} eventKey={index.toString()}>
-          <Accordion.Header>
-            {recipe.name}
-            <Button variant="secondary" onClick={() => handleEditRecipe(recipe)}>Edit</Button>
-            <Button variant="danger" onClick={() => handleDeleteRecipe(recipe.id)}>Delete</Button> 
-          </Accordion.Header>
-          <Accordion.Body>
-            <div align="left">
-              <h2>Ingredients:</h2>
-              <ul>
-                {recipe.ingredients.map((ingredient, idx) => (
-                  <li key={idx}>{ingredient}</li>
-                ))}
-              </ul>
-              <h2>Steps:</h2>
-              <ol>
-                {recipe.steps.map((step, idx) => (
-                  <li key={idx}>{step}</li>
-                ))}
-              </ol>
-              <img
-                src={recipe.imageUrl}
-                alt={recipe.name}
-                style={{ maxWidth: '300px', maxHeight: '200px' }}
-              />
-              <button onClick={() => openCookingMode(recipe)}>
-                Open Cooking Mode
-              </button>
-              <button onClick={() => handleEditRecipe(recipe)}>Edit</button>
-              <button onClick={() => handleDeleteRecipe(recipe.id)}>
-                Delete
-              </button>
-            </div>
-          </Accordion.Body>
-        </Accordion.Item>
-      ))}
-    </Accordion>
-
+  {recipes.map((recipe, index) => (
+    <Accordion.Item key={index} eventKey={index.toString()}>
+      <Accordion.Header>
+        {recipe.name}
+      </Accordion.Header>
+      <Accordion.Body>
+        <div align="left">
+          <h2>Ingredients:</h2>
+          <ul>
+            {recipe.ingredients.map((ingredient, idx) => (
+              <li key={idx}>{ingredient}</li>
+            ))}
+          </ul>
+          <h2>Steps:</h2>
+          <ol>
+            {recipe.steps.map((step, idx) => (
+              <li key={idx}>{step}</li>
+            ))}
+          </ol>
+          <img
+            src={recipe.imageUrl}
+            alt={recipe.name}
+            style={{ maxWidth: '300px', maxHeight: '200px' }}
+          />
+          <button onClick={() => openCookingMode(recipe)}>
+            Open Cooking Mode
+          </button>
+        </div>
+      </Accordion.Body>
+      <div className="d-flex justify-content-end m-2">
+        <Button variant="secondary" onClick={() => handleEditRecipe(recipe)} className="me-2">
+          Edit
+        </Button>
+        <Button variant="danger" onClick={() => handleDeleteRecipe(recipe.id)}>
+          Delete
+        </Button>
+      </div>
+    </Accordion.Item>
+  ))}
+</Accordion>
     <div>
       <br />
       <p>
