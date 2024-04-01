@@ -45,7 +45,7 @@ function App() {
 
   // Function to handle saving the edited recipe
   const handleSaveRecipe = () => {
-    const updatedRecipe = JSON.parse(editRecipe);
+    const updatedRecipe = editRecipe;
     fetch(`/api/recipes/${updatedRecipe.id}`, {
       method: 'PUT',
       headers: {
@@ -217,7 +217,7 @@ return (
           value={editRecipe ? JSON.stringify(editRecipe, null, 2) : ''}
           rows={10}
           cols={50}
-          onChange={(e) => setEditRecipe(e.target.value)}
+          onChange={(e) => setEditRecipe(JSON.parse(e.target.value))}
         ></textarea>
       </Modal.Body>
       <Modal.Footer>
