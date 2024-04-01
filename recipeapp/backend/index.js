@@ -63,8 +63,8 @@ app.post('/api/recipes', async (req, res) => {
 });
 
 // Route to edit a recipe
-app.put('/api/recipes/:id', async (req, res) => {
-  const recipeId = req.params.id;
+app.put('/api/recipes/:recipe_id', async (req, res) => {
+  const recipeId = req.params.recipe_id;
   const updatedRecipe = req.body;
 
   try {
@@ -83,6 +83,8 @@ app.delete('/api/recipes/:id', async (req, res) => {
 
   try {
     const container = cosmosClient.database(databaseName).container(containerName);
+    console.log('Deleting item with recipeId:', recipeId);
+    console.log('Container ID:', container.id);
     await container.item(recipeId).delete();
     res.sendStatus(204);
   } catch (error) {

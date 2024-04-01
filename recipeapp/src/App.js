@@ -68,27 +68,24 @@ function App() {
   };
 
   // Function to handle deleting a recipe
-  const handleDeleteRecipe = (recipeId) => {
+  const handleDeleteRecipe = async (id) => {
     if (window.confirm('Are you sure you want to delete this recipe?')) {
-      fetch(`/api/recipes/${recipeId}`, {
-        method: 'DELETE',
-      })
-        .then((response) => {
-          if (response.ok) {
-            setRecipes((prevRecipes) =>
-              prevRecipes.filter((recipe) => recipe.id !== recipeId)
-            );
-          } else {
-            throw new Error('Failed to delete recipe');
-          }
-        })
-        .catch((error) => {
-          console.error('Error deleting recipe:', error);
+      try {
+        const deleteResponse = await fetch(`/api/recipes/${id}`, {
+          method: 'DELETE'
         });
+        if (deleteResponse.ok) {
+          setRecipes((prevRecipes) =>
+            prevRecipes.filter((recipe) => recipe.id !== id)
+          );
+        } else {
+          console.error('Failed to delete recipe');
+        }
+      } catch (error) {
+        console.error('Error deleting recipe:', error);
+      }
     }
   };
-
-
 
   // Enable the user to add new recipes
   const  [newrp,setNewrp] = useState("");
