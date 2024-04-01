@@ -62,6 +62,40 @@ app.post('/api/recipes', async (req, res) => {
   }
 });
 
+// Route to edit a recipe
+app.put('/api/recipes/:recipe_id', async (req, res) => {
+  const recipeId = req.params.recipe_id;
+  const updatedRecipe = req.body;
+
+  try {
+    const container = cosmosClient.database(databaseName).container(containerName);
+    const { resource } = await container.item(recipeId).replace(updatedRecipe);
+    res.json(resource);
+  } catch (error) {
+    console.error("Error updating recipe:", error);
+    res.status(500).json({ message: 'Internal server error.' });
+  }
+});
+
+// Route to delete a recipe
+app.delete('/api/recipes/:recipe_id', async (req, res) => {
+  const recipeId = req.params.recipe_id;
+  const id = req.body.id.toString(); // Convert to string assuming the ID is included in the request body
+
+  try {
+    const container = cosmosClient.database(databaseName).container(containerName);
+    console.log('Deleting item with recipeId:', recipeId, ' and ID:', id);
+    console.log('Container ID:', container.id);
+    
+    // Provide both the ID and the partition key when deleting
+    await container.item(id, recipeId).delete(); 
+    
+    res.sendStatus(204);
+  } catch (error) {
+    console.error("Error deleting recipe:", error);
+    res.status(500).json({ message: 'Internal server error.' });
+  }
+});
 
 // Route for ingredient search
 app.get('/api/ingredients/search', async (req, res) => {
