@@ -78,14 +78,18 @@ app.put('/api/recipes/:recipe_id', async (req, res) => {
 });
 
 // Route to delete a recipe
-app.delete('/api/recipes/:id', async (req, res) => {
-  const recipeId = req.params.id;
+app.delete('/api/recipes/:recipe_id', async (req, res) => {
+  const recipeId = req.params.recipe_id;
+  const id = req.body.id.toString(); // Convert to string assuming the ID is included in the request body
 
   try {
     const container = cosmosClient.database(databaseName).container(containerName);
-    console.log('Deleting item with recipeId:', recipeId);
+    console.log('Deleting item with recipeId:', recipeId, ' and ID:', id);
     console.log('Container ID:', container.id);
-    await container.item(recipeId).delete();
+    
+    // Provide both the ID and the partition key when deleting
+    await container.item(id, recipeId).delete(); 
+    
     res.sendStatus(204);
   } catch (error) {
     console.error("Error deleting recipe:", error);
