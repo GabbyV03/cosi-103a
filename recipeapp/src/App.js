@@ -68,18 +68,22 @@ function App() {
   };
 
   // Function to handle deleting a recipe
-  const handleDeleteRecipe = async (id) => {
+  const handleDeleteRecipe = async (recipe_id, id) => {
     if (window.confirm('Are you sure you want to delete this recipe?')) {
       try {
-        const deleteResponse = await fetch(`/api/recipes/${id}`, {
-          method: 'DELETE'
+        const deleteResponse = await fetch(`/api/recipes/${recipe_id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ id: id }) // Include the id in the request body
         });
         if (deleteResponse.ok) {
           setRecipes((prevRecipes) =>
-            prevRecipes.filter((recipe) => recipe.id !== id)
+            prevRecipes.filter((recipe) => recipe.recipe_id !== recipe_id)
           );
         } else {
-          console.error('Failed to delete recipe');
+          console.error('Failed to delete recipe'); 
         }
       } catch (error) {
         console.error('Error deleting recipe:', error);
@@ -176,7 +180,7 @@ return (
         <Button variant="secondary" onClick={() => handleEditRecipe(recipe)} className="me-2">
           Edit
         </Button>
-        <Button variant="danger" onClick={() => handleDeleteRecipe(recipe.id)}>
+        <Button variant="danger" onClick={() => handleDeleteRecipe(recipe.recipe_id, recipe.id)}>
           Delete
         </Button>
       </div>
