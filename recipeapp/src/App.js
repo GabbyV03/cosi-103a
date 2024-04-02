@@ -42,16 +42,63 @@ function App() {
     setEditRecipe(recipe);
     setShowEditModal(true);
   };
+  // Function to handle delete all
+  const handleKeyDown = (event) => {  
+    if (event.key === 'Delete' || event.key === 'Backspace') {  
+      const newValue = event.target.value; 
+      if (newValue.length === 0 ) { 
+        //alert("You cannot remove all the text"); 
+        event.preventDefault();
+        return;  
+      }  
+    }  
+  }; 
 
   // Function to handle saving the edited recipe
-  const handleSaveRecipe = () => {
+  const handleSaveRecipe = (event) => {
     const updatedRecipe = editRecipe;
-    fetch(`/api/recipes/${updatedRecipe.id}`, {
+    if (updatedRecipe===null){
+      return;
+    }
+    if (!updatedRecipe.hasOwnProperty('name')){
+      return;
+    }
+    if (!updatedRecipe.hasOwnProperty('recipe_id')){
+      return;
+    }
+    if (!updatedRecipe.hasOwnProperty('steps')){
+      return;
+    }
+    if (!updatedRecipe.hasOwnProperty('ingredients')){
+      return;
+    }
+    if (!updatedRecipe.hasOwnProperty('imageUrl')){
+      return;
+    }
+    if (!updatedRecipe.hasOwnProperty('id')){
+      return;
+    }
+    if (!updatedRecipe.hasOwnProperty('_rid')){
+      return;
+    }
+    if (!updatedRecipe.hasOwnProperty('_etag')){
+      return;
+    }
+    if (!updatedRecipe.hasOwnProperty('_ts')){
+      return;
+    }
+    if (!updatedRecipe.hasOwnProperty('_self')){
+      return;
+    }
+    if (!updatedRecipe.hasOwnProperty('_attachments')){
+      return;
+    }
+    fetch(`/api/recipes/${editRecipe.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(updatedRecipe),
+      body: JSON.stringify(editRecipe),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -208,17 +255,20 @@ return (
       <CookingMode recipe={selectedRecipe} onClose={closeCookingMode} />
     )}
 
-    <Modal show={showEditModal} onHide={() => setShowEditModal(false)}>
+    <Modal show={showEditModal} onHide={() => setShowEditModal(false)} 
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered>
       <Modal.Header closeButton>
         <Modal.Title>Edit Recipe</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <textarea
+        <div style={{ textAlign: 'center' }}> <textarea  onKeyDown={handleKeyDown}
           value={editRecipe ? JSON.stringify(editRecipe, null, 2) : ''}
           rows={10}
-          cols={50}
+          cols={60}
           onChange={(e) => setEditRecipe(JSON.parse(e.target.value))}
-        ></textarea>
+        ></textarea></div>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={() => setShowEditModal(false)}>
