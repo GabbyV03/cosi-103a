@@ -51,7 +51,7 @@ test('adds a new recipe and makes API call', async () => {
 
   // Add a new recipe
   fireEvent.change(screen.getByRole('textbox'), { target: { value: '{"name": "New Recipe", "ingredients": ["Ingredient1", "Ingredient2"], "steps": ["Step1", "Step2"], "imageUrl": "example.com/image.jpg"}' } });
-  fireEvent.click(screen.getByRole('button', { name: 'add new recipe' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Add New Recipe' }));
 
   // Wait for the API call to be made
   await waitFor(() => expect(global.fetch).toHaveBeenCalledWith('/api/recipes', expect.objectContaining({
