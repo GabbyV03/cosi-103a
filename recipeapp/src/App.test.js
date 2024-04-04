@@ -1,8 +1,6 @@
 // App.test.js
-import { render, screen, waitFor} from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import App from './App';
-
-// imported for testing the form
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
@@ -51,14 +49,22 @@ test('adds a new recipe and makes API call', async () => {
 
   // Add a new recipe
   fireEvent.change(screen.getByRole('textbox'), { target: { value: '{"name": "New Recipe", "ingredients": ["Ingredient1", "Ingredient2"], "steps": ["Step1", "Step2"], "imageUrl": "example.com/image.jpg"}' } });
-  fireEvent.click(screen.getByRole('button', { name: 'add new recipe' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Add New Recipe' })); // 
 
   // Wait for the API call to be made
-  await waitFor(() => expect(global.fetch).toHaveBeenCalledWith('/api/recipes', expect.objectContaining({
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: '{"name": "New Recipe", "ingredients": ["Ingredient1", "Ingredient2"], "steps": ["Step1", "Step2"], "imageUrl": "example.com/image.jpg"}',
-  })));
+  await waitFor(() =>
+    expect(global.fetch).toHaveBeenCalledWith('/api/recipes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: 1,
+        name: 'New Recipe',
+        ingredients: ['Ingredient1', 'Ingredient2'],
+        steps: ['Step1', 'Step2'],
+        imageUrl: 'example.com/image.jpg',
+      }),
+    })
+  );
 
   // Verify that the new recipe is added to the UI
   expect(screen.getByText('New Recipe')).toBeInTheDocument();
