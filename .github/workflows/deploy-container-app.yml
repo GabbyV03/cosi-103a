@@ -53,14 +53,14 @@ jobs:
       - name: Deploy Docker Image to Azure Container Apps
         id: deployment
         run: |
-          az containerapp revision create \
+          # Deploy the Docker image to Azure Container Apps
+          az containerapp deployment create \
           --name recipeapp103 \
           --resource-group cosi-103 \
           --acr-name recipeapp103 \
           --tag latest \
           --environment my-environment \
-          --env "NUTRITION_API_KEY=${NUTRITION_API_KEY}" \
-          --no-traffic
+          --env "NUTRITION_API_KEY=${NUTRITION_API_KEY}"
 
       # Get the ID of the newly created revision
       - name: Get New Revision ID
@@ -87,12 +87,11 @@ jobs:
           # Check the exit status to determine if smoke tests passed or failed
           if [ $exit_status -eq 0 ]; then
             echo "Smoke tests passed. Switching traffic to the new revision..."
-            az containerapp revision activate --name recipeapp103 --resource-group cosi-103 --revision ${{ steps.get_revision_id.outputs.revision_id }}
+            # Activate the newly created revision
+            az containerapp ingress traffic update --name recipeapp103 --resource-group cosi-103 --revision ${{ steps.get_revision_id.outputs.revision_id }}
           else
             echo "Smoke tests failed. Rolling back deployment..."
-            # Retrieve the ID of the previous stable revision
-            prev_revision_id=$(az containerapp revision list --name recipeapp103 --resource-group cosi-103 --query "[?properties.isActive==true].id" -o tsv)
-            # Perform rollback by activating the previous stable revision
-            az containerapp revision activate --name recipeapp103 --resource-group cosi-103 --revision $prev_revision_id
+            # Rollback by deactivating the newly created revision
+            az containerapp ingress traffic update --name recipeapp103 --resource-group cosi-103 --revision ${{ steps.get_revision_id.outputs.revision_id }} --no-traffic
             exit 1
           fi
