@@ -52,10 +52,11 @@ jobs:
       # Create a new revision of the existing container app
       - name: Create New Revision
         run: |
+          existing_revision_id=$(az containerapp revision list --name recipeapp103 --resource-group cosi-103 --query "[?contains(tags['acrImageTag'], 'latest')].id" -o tsv)
           az containerapp revision copy \
           --name recipeapp103 \
           --resource-group cosi-103 \
-          --source-revision-id <EXISTING_REVISION_ID> \
+          --source-revision-id $existing_revision_id \
           --tag latest \
           --environment my-environment \
           --env "NUTRITION_API_KEY=${NUTRITION_API_KEY}" \
