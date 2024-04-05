@@ -56,11 +56,7 @@ jobs:
           az containerapp update \
           --name recipeapp103 \
           --resource-group cosi-103 \
-          --acr-name recipeapp103 \
-          --tag latest \
-          --environment my-environment \
-          --env "NUTRITION_API_KEY=${NUTRITION_API_KEY}" \
-          --no-traffic
+          --tag latest
 
       # Get the ID of the newly created revision
       - name: Get New Revision ID
