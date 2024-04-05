@@ -1,8 +1,8 @@
-name: Azure Container Apps Blue-Green Deployment
+name: Azure Container Apps Smoke Test and Revision Deployment
 
 on:
   workflow_dispatch:
-  pull request:
+  pull_request:
     branches:
       - main
 
@@ -58,7 +58,7 @@ jobs:
           --acr-name recipeapp103 \
           --tag latest \
           --environment my-environment \
-          --env NUTRITION_API_KEY=$NUTRITION_API_KEY \
+          --env "NUTRITION_API_KEY=${NUTRITION_API_KEY}" \
           --no-traffic
 
       # Get the ID of the newly created revision
@@ -79,7 +79,7 @@ jobs:
       - name: Check Smoke Test Result
         if: steps.deployment.outcome == 'success'
         run: |
-        # Run smoke tests using node and store the exit status
+          # Run smoke tests using node and store the exit status
           node smoke.test.js
           exit_status=$?
 
@@ -95,4 +95,3 @@ jobs:
             az containerapp revision activate --name recipeapp103 --resource-group cosi-103 --revision $prev_revision_id
             exit 1
           fi
-        
