@@ -52,7 +52,8 @@ jobs:
       # Create a new revision of the existing container app
       - name: Create New Revision
         run: |
-          existing_revision_id=$(az containerapp revision list --name recipeapp103 --resource-group cosi-103 --output json | jq -r '.[] | select(.tags.acrImageTag == "latest").id')
+          existing_revision_id=$(az containerapp revision list --name recipeapp103 --resource-group cosi-103 --output json | jq -r '.[0].id')
+          echo "Existing Revision ID: $existing_revision_id"
           az containerapp revision copy \
           --name recipeapp103 \
           --resource-group cosi-103 \
