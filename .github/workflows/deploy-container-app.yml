@@ -62,8 +62,9 @@ jobs:
     --environment dev \
     --env "NUTRITION_API_KEY=${NUTRITION_API_KEY}" \
     --no-traffic
-env:
-  EXISTING_REVISION_ID: $existing_revision_id
+  env:
+    EXISTING_REVISION_ID: $existing_revision_id
+
 
       # Get the ID of the newly created revision
       - name: Get New Revision ID
