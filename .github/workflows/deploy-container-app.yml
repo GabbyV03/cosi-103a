@@ -65,19 +65,13 @@ jobs:
           revision_id=$(az containerapp revision list --name recipeapp103 --resource-group cosi-103 --query "[?tags.acrImageTag == 'latest'].id" -o tsv)
           echo "::set-output name=revision_id::$revision_id"
 
-      # Run smoke tests against deployed revision
-      - name: Run Smoke Tests
-        if: steps.deployment.outcome == 'success'
-        run: |
-          echo "Running smoke tests..."
-          node recipeapp/smoke.test.js
 
       # Check the result of smoke tests
       - name: Check Smoke Test Result
         if: steps.deployment.outcome == 'success'
         run: |
           # Run smoke tests using node and store the exit status
-          node smoke.test.js
+          node recipeapp/smoke.test.js
           exit_status=$?
 
           # Check the exit status to determine if smoke tests passed or failed
