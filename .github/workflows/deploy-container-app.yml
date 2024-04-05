@@ -49,22 +49,18 @@ jobs:
           # Push Docker image to ACR
           docker push recipeapp103.azurecr.io/my-image:latest
 
-# Create a new revision of the existing container app with no traffic
-- name: Create New Revision with No Traffic
-  run: |
-    existing_revision_id=$(az containerapp revision list --name recipeapp103 --resource-group cosi-103 --output json | jq -r '.[0].id')
-    existing_revision_id_env="EXISTING_REVISION_ID=$existing_revision_id"
-    eval $existing_revision_id_env
-    az containerapp revision copy \
-    --name recipeapp103 \
-    --resource-group cosi-103 \
-    --tag latest \
-    --environment dev \
-    --env "NUTRITION_API_KEY=${NUTRITION_API_KEY}" \
-    --no-traffic
-  env:
-    EXISTING_REVISION_ID: $existing_revision_id
-
+      # Create a new revision of the existing container app with no traffic
+      - name: Create New Revision with No Traffic
+        run: |
+          existing_revision_id=$(az containerapp revision list --name recipeapp103 --resource-group cosi-103 --output json | jq -r '.[0].id')
+          az containerapp revision copy \
+          --name recipeapp103 \
+          --resource-group cosi-103 \
+          --source-revision-id $existing_revision_id \
+          --tag latest \
+          --environment dev \
+          --env "NUTRITION_API_KEY=${NUTRITION_API_KEY}" \
+          --no-traffic
 
       # Get the ID of the newly created revision
       - name: Get New Revision ID
