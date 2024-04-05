@@ -70,7 +70,7 @@ jobs:
         if: steps.deployment.outcome == 'success'
         run: |
           echo "Running smoke tests..."
-          node /recipeapp/smoke.test.js
+          node recipeapp/smoke.test.js
 
       # Check the result of smoke tests
       - name: Check Smoke Test Result
