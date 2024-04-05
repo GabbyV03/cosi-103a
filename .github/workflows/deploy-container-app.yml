@@ -65,8 +65,7 @@ jobs:
           revision_id=$(az containerapp revision list --name recipeapp103 --resource-group cosi-103 --query "[?tags.acrImageTag == 'latest'].id" -o tsv)
           echo "::set-output name=revision_id::$revision_id"
 
-
-      # Check the result of smoke tests
+      # Check smoke test results
       - name: Check Smoke Test Result
         if: steps.deployment.outcome == 'success'
         run: |
@@ -77,12 +76,9 @@ jobs:
           # Check the exit status to determine if smoke tests passed or failed
           if [ $exit_status -eq 0 ]; then
             echo "Smoke tests passed. Switching traffic to the new revision..."
+            # Activate the newly created revision
             az containerapp revision activate --name recipeapp103 --resource-group cosi-103 --revision ${{ steps.get_revision_id.outputs.revision_id }}
           else
-            echo "Smoke tests failed. Rolling back deployment..."
-            # Retrieve the ID of the previous stable revision
-            prev_revision_id=$(az containerapp revision list --name recipeapp103 --resource-group cosi-103 --query "[?properties.isActive==true].id" -o tsv)
-            # Perform rollback by activating the previous stable revision
-            az containerapp revision activate --name recipeapp103 --resource-group cosi-103 --revision $prev_revision_id
+            echo "Smoke tests failed. Leaving traffic on the previous stable revision."
             exit 1
           fi
