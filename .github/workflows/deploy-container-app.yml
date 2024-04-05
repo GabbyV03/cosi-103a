@@ -62,7 +62,7 @@ jobs:
       - name: Get New Revision ID
         id: get_revision_id
         run: |
-          revision_id=$(az containerapp revision list --name recipeapp103 --resource-group cosi-103 --query "[?contains(tags['acrImageTag'], 'latest')].id" -o tsv)
+          revision_id=$(az containerapp revision list --name recipeapp103 --resource-group cosi-103 --query "[?tags.acrImageTag == 'latest'].id" -o tsv)
           echo "::set-output name=revision_id::$revision_id"
 
       # Run smoke tests against deployed revision
