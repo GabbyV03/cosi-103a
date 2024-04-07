@@ -62,23 +62,25 @@ jobs:
       - name: Get New Revision ID
         id: get_revision_id
         run: |
-          revision_id=$(az containerapp revision list --name recipeapp103 --resource-group cosi-103 --query "[?tags.acrImageTag == 'latest'].id" -o tsv)
+          revision_id=$(az containerapp revision list 
+          --name recipeapp103 
+          --resource-group cosi-103 
+          --query "[?tags.acrImageTag == 'latest'].id" -o tsv)
           echo "::set-output name=revision_id::$revision_id"
 
-      # Check smoke test results
       - name: Check Smoke Test Result
-        if: steps.deployment.outcome == 'success'
-        run: |
-          # Run smoke tests using node and store the exit status
-          node recipeapp/smoke.test.js
-          exit_status=$?
+  if: steps.deployment.outcome == 'success'
+  run: |
+    # Run smoke tests using node and store the exit status
+    node recipeapp/smoke.test.js
+    exit_status=$?
 
-          # Check the exit status to determine if smoke tests passed or failed
-          if [ $exit_status -eq 0 ]; then
-            echo "Smoke tests passed. Switching traffic to the new revision..."
-            # Activate the newly created revision
-            az containerapp revision activate --name recipeapp103 --resource-group cosi-103 --revision ${{ steps.get_revision_id.outputs.revision_id }}
-          else
-            echo "Smoke tests failed. Leaving traffic on the previous stable revision."
-            exit 1
-          fi
+    # Check the exit status to determine if smoke tests passed or failed
+    if [ $exit_status -eq 0 ]; then
+      echo "Smoke tests passed. Switching traffic to the new revision..."
+      # Activate the newly created revision
+      az containerapp revision activate --name recipeapp103 --resource-group cosi-103 --revision ${{ steps.get_revision_id.outputs.revision_id }}
+    else
+      echo "Smoke tests failed. Leaving traffic on the previous stable revision."
+      exit 1
+    fi
