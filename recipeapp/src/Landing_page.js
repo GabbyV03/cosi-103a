@@ -159,7 +159,7 @@ function IngredientSearch() {
     <br/>
       <div style={{display: 'flex', flexDirection: 'row', justifyContent:'center' }}>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input class="highlighted" 
+        <input className="highlighted" 
           type="text"
           size="40"
           value={query}
