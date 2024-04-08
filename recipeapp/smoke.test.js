@@ -7,12 +7,10 @@ test('renders app without crashing', () => {
   render(<App />);
 });
 
-// Smoke test for adding recipes to the list  
-test('adds a new recipe and displays it in the list', async () => {
-  // Render the App component
+// Smoke test for the "Add New Recipe" button  
+test('adds a new recipe into the list', async () => {
   const { getByText, getByLabelText } = render(<App />);
 
-  // Simulate entering a new recipe JSON in the textarea
   const textarea = getByLabelText('New Recipe JSON');
   fireEvent.change(textarea, { target: { value: '{"name": "New Recipe", "ingredients": ["Ingredient 1", "Ingredient 2"], "steps": ["Step 1", "Step 2"], "imageUrl": "https://example.com/image.jpg"}' } });
 
@@ -20,13 +18,13 @@ test('adds a new recipe and displays it in the list', async () => {
   const addButton = getByText('Add New Recipe');
   fireEvent.click(addButton);
 
-  // Wait for the new recipe to appear in the list
   await waitFor(() => {
     expect(getByText('New Recipe')).toBeInTheDocument();
   });
 });
 
-// Can do: test landing page and team page
+// Can do: test landing page, team page,
+// and/or edition/deletion buttons on the recipe page
 
 
 // Just for testing workflow file
