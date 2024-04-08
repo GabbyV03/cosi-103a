@@ -55,7 +55,7 @@ jobs:
           az containerapp update \
           --name recipeapp103 \
           --resource-group cosi-103 \
-          --tag latest
+          --image recipeapp103.azurecr.io/my-image:latest
 
       # Get the ID of the newly created revision
       - name: Get New Revision ID
