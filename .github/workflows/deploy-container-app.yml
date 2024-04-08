@@ -1,29 +1,31 @@
-name: Run Azure Login with OIDC
+name: Azure Container Apps Smoke Test and Revision Deployment
+
 on:
   workflow_dispatch:
   pull_request:
     branches:
       - main
-      
+
 permissions:
   id-token: write
   contents: read
 
-jobs: 
+jobs:
   deploy-infra:
     name: Deploy Infra
     runs-on: ubuntu-latest
     environment: dev
     steps:
-      - uses: actions/checkout@v3
-      
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Log into Azure
         uses: azure/login@v1
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          
+
       - name: Run az commands
         run: |
           az account show
@@ -31,13 +33,51 @@ jobs:
         env:
           NUTRITION_API_KEY: ${{ secrets.NUTRITION_API_KEY }}
 
-      - name: Build and deploy Container App
-        uses: azure/container-apps-deploy-action@v1
-        with:
-          appSourcePath: recipeapp
-          acrName: recipeapp103
-          containerAppName: recipeapp103
-          resourceGroup: cosi-103
-          environmentVariables: |
-              NUTRITION_API_KEY=${{ secrets.NUTRITION_API_KEY }}
-        
+      # Build Docker image
+      - name: Build Docker Image
+        run: |
+          cd recipeapp
+          docker build -t my-image .
+
+      # Push Docker image to Azure Container Registry (ACR)
+      - name: Push Docker Image to ACR
+        run: |
+          # Login to Azure Container Registry (ACR)
+          az acr login --name recipeapp103
+          # Tag Docker image
+          docker tag my-image recipeapp103.azurecr.io/my-image:latest
+          # Push Docker image to ACR
+          docker push recipeapp103.azurecr.io/my-image:latest
+
+      # Deploy Docker image to Azure Container Apps
+      - name: Deploy Docker Image to Azure Container Apps
+        run: |
+          az containerapp update \
+          --name recipeapp103 \
+          --resource-group cosi-103 \
+          --image recipeapp103.azurecr.io/my-image:latest
+
+      # Get the ID of the newly created revision
+      - name: Get New Revision ID
+        id: get_revision_id
+        run: |
+          revision_id=$(az containerapp revision list --name recipeapp103 --resource-group cosi-103 --query "[?tags.acrImageTag == 'latest'].id" -o tsv)
+          echo "::set-output name=revision_id::$revision_id"
+
+
+      # Check the result of smoke tests
+      - name: Check Smoke Test Result
+        if: steps.deployment.outcome == 'success'
+        run: |
+          # Run smoke tests using node and store the exit status
+          node recipeapp/smoke.test.js
+          exit_status=$?
+
+          # Check the exit status to determine if smoke tests passed or failed
+          if [ $exit_status -eq 0 ]; then
+            echo "Smoke tests passed. Switching traffic to the new revision..."
+            az containerapp revision activate --name recipeapp103 --resource-group cosi-103 --revision ${{ steps.get_revision_id.outputs.revision_id }}
+          else
+            echo "Smoke tests failed. Leaving traffic on the previous stable revision."
+            exit 1
+          fi
