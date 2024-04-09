@@ -52,5 +52,5 @@ test('renders deletion button and checks its functionality', async () => {
 });
 
 // Just for testing workflow file
-process.exit(1);
+//process.exit(1);
 
