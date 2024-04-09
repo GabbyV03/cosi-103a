@@ -31,18 +31,15 @@ test('adds a new recipe into the list', async () => {
   });
 });
 
-
-// and/or edition/deletion buttons on the recipe page
+// Smoke test for the "deletion" button 
 test('renders deletion button and checks its functionality', async () => {
   render(<RecipePage />);
-  const deleteButton = screen.getByRole('button', { name: /delete/i });
+  const deleteButton = screen.getByRole('button', { name: /Delete/i });
   userEvent.click(deleteButton);
 
-  // Confirm the deletion
   const confirmButton = screen.getByRole('button', { name: /OK/i });
   userEvent.click(confirmButton);
 
-  // Wait for the recipes to be updated
   await screen.findByText('Recipe deleted successfully');
 });
 

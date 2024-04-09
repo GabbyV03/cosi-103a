@@ -25,5 +25,14 @@ in order to install Azure CLI and make sure to restart the shell
 once done installing run:
 az login --use-device-code and follow the instructions to authenticate
 
+# Smoke Tests (smoke.test.js)
 
+This file contains smoke tests for the application. This a quick first check to catch any major issues.
+
+## Test: 'renders app without crashing' and 'renders Team Page'
+This is a basic smoke test to ensure that the main `App` component and `TeamPage` component renders without throwing any errors. 
+
+
+## Test: 'adds a new recipe into the list' and 'delete a new recipe'
+This test simulates the process of adding and deleting a recipe. 
 
