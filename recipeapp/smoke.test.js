@@ -39,7 +39,7 @@ test('adds a new recipe into the list', async () => {
 test('renders deletion button and checks its functionality', async () => {
   render(<RecipePage />);
 
-  const deleteButton = screen.queryByText('Delete');
+  const deleteButton = screen.queryByText('Del');
   expect(deleteButton).not.toBeNull();
   userEvent.click(deleteButton);
 
