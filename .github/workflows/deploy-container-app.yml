@@ -80,6 +80,7 @@ jobs:
       - name: Check Smoke Test Result
         if: steps.deployment.outcome == 'success'
         run: |
+          set -e
           # Run smoke tests using node and store the exit status
           node recipeapp/smoke.test.js
           exit_status=$?
