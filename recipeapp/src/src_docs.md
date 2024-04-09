@@ -27,12 +27,6 @@ az login --use-device-code and follow the instructions to authenticate
 
 # Smoke Tests (smoke.test.js)
 
-This file contains smoke tests for the application. This a quick first check to catch any major issues.
+This file contains smoke tests for the application. This a quick first check to catch any major issues. For the page test, we only test 'renders app' and 'renders Team Page'; for the button test, we only test 'add' and 'delete' button.
 
-## Test: 'renders app without crashing' and 'renders Team Page'
-This is a basic smoke test to ensure that the main `App` component and `TeamPage` component renders without throwing any errors. 
-
-
-## Test: 'adds a new recipe into the list' and 'delete a new recipe'
-This test simulates the process of adding and deleting a recipe. 
 

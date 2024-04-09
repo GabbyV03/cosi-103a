@@ -2,6 +2,9 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
 
+// Yao on Apr 8:
+// I think we might have some errors in the test file, cause it can pass anyway even I type the wrong name of the button...?
+
 // Smoke test for the Landing Page
 test('renders app without crashing', () => {
   render(<App />);
@@ -35,9 +38,9 @@ test('adds a new recipe into the list', async () => {
 test('renders deletion button and checks its functionality', async () => {
   render(<RecipePage />);
 
-  const addButton = getByText('Delete');
+  const addButton = getByText('Del');
   fireEvent.click(addButton);
-  
+
   const confirmButton  = getByText('OK');
   fireEvent.click(confirmButton );
 
