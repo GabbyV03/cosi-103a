@@ -28,6 +28,7 @@ test('renders the Landing Page without crashing', () => {
 
   render(<Landing_page {...mockProps} />);
 
+  // Clean up
   jest.restoreAllMocks();
 });
 
@@ -44,20 +45,19 @@ test('renders Team Page', () => {
 // For now, it should NNNNOOOOOTTTTT pass the test.
 
 // Smoke test for the "Add New Recipe" button  
-// test('adds a new recipe into the list', async () => {
-//   const { getByText, getByLabelText } = render(<App />);
+test('adds a new recipe into the list', async () => {
+  const { getByText, getByLabelText } = render(<App />);
 
-//   const textarea = getByLabelText('New Recipe JSON');
-//   fireEvent.change(textarea, { target: { value: '{"name": "New Recipe", "ingredients": ["Ingredient 1", "Ingredient 2"], "steps": ["Step 1", "Step 2"], "imageUrl": "https://example.com/image.jpg"}' } });
+  fireEvent.change(screen.getByRole('textbox'), { target: { value: '{"name": "New Recipe", "ingredients": ["Ingredient 1", "Ingredient 2"], "steps": ["Step 1", "Step 2"], "imageUrl": "https://example.com/image.jpg"}' } });
 
-//   // Simulate clicking the "Add New Recipe" button
-//   const addButton = getByText('Add New Recipe');
-//   fireEvent.click(addButton);
+  // Simulate clicking the "Add New Recipe" button
+  const addButton = getByText('Add New Recipe');
+  fireEvent.click(addButton);
 
-//   await waitFor(() => {
-//     expect(getByText('New Recipe')).toBeInTheDocument();
-//   });
-// });
+  await waitFor(() => {
+    expect(getByText('New Recipe')).toBeInTheDocument();
+  });
+});
 
 // Smoke test for the "deletion" button 
 // test('renders deletion button and checks its functionality', async () => {
