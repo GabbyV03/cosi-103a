@@ -69,7 +69,7 @@ jobs:
       - name: Check Smoke Test Result
         if: steps.deployment.outcome == 'success'
         run: |
-          set -e
+          set -ex
           # Install dependencies  (just added)
           npm ci
 
