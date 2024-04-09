@@ -14,6 +14,7 @@ window.matchMedia = window.matchMedia || function() {
   };
 };
 
+// Test that the three pages render
 test('renders the Landing Page without crashing', () => {
   // Mocking because the landing page uses props; see landing_page.test.js
   jest.spyOn(global, 'fetch').mockResolvedValueOnce({
@@ -46,7 +47,7 @@ test('renders Team Page', () => {
 
 // Smoke test for the "Add New Recipe" button  
 test('adds a new recipe into the list', async () => {
-  const { getByText, getByLabelText } = render(<App />);
+  const { getByText } = render(<App />);
 
   fireEvent.change(screen.getByRole('textbox'), { target: { value: '{"name": "New Recipe", "ingredients": ["Ingredient 1", "Ingredient 2"], "steps": ["Step 1", "Step 2"], "imageUrl": "https://example.com/image.jpg"}' } });
 
@@ -59,23 +60,7 @@ test('adds a new recipe into the list', async () => {
   });
 });
 
-// Smoke test for the "deletion" button 
-// test('renders deletion button and checks its functionality', async () => {
-//   render(<RecipePage />);
-
-//   expect(getByText('Delete')).toBeInTheDocument();
-//   const deleteButton = screen.getByText('Del');
-//   expect(deleteButton).not.toBeNull();
-//   userEvent.click(deleteButton);
-
-//   expect(getByText('OK')).toBeInTheDocument();
-//   const confirmButton  = screen.getByText('OK');
-//   expect(confirmButton).not.toBeNull();
-//   userEvent.click(confirmButton);
-
-//   await screen.findByText('Recipe deleted successfully');
-// });
+// Other buttons are not accessible and thus cannot be tested
 
 // Just for testing workflow file
-//process.exit(0);
-
+process.exit(1);
