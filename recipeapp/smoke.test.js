@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import App from './App';
 
 // Yao on Apr 8:
@@ -40,11 +40,11 @@ test('adds a new recipe into the list', async () => {
 test('renders deletion button and checks its functionality', async () => {
   render(<RecipePage />);
 
-  const deleteButton = screen.queryByText('Del');
+  const deleteButton = screen.getByText('Del');
   expect(deleteButton).not.toBeNull();
   userEvent.click(deleteButton);
 
-  const confirmButton  = screen.queryByText('OK');
+  const confirmButton  = screen.getByText('OK');
   expect(confirmButton).not.toBeNull();
   userEvent.click(confirmButton);
 
