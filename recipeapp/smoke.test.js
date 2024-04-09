@@ -4,6 +4,7 @@ import App from './App';
 
 // Yao on Apr 8:
 // I think we might have some errors in the test file, cause it can pass anyway even I type the wrong name of the button...?
+// For now, it should NOT pass the test.
 
 // Smoke test for the Landing Page
 test('renders app without crashing', () => {
@@ -51,5 +52,5 @@ test('renders deletion button and checks its functionality', async () => {
 });
 
 // Just for testing workflow file
-//process.exit(1);
+process.exit(1);
 
