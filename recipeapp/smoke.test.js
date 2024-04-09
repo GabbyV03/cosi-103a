@@ -34,11 +34,12 @@ test('adds a new recipe into the list', async () => {
 // Smoke test for the "deletion" button 
 test('renders deletion button and checks its functionality', async () => {
   render(<RecipePage />);
-  const deleteButton = screen.getByRole('button', { name: /Delete/i });
-  userEvent.click(deleteButton);
 
-  const confirmButton = screen.getByRole('button', { name: /OK/i });
-  userEvent.click(confirmButton);
+  const addButton = getByText('Delete');
+  fireEvent.click(addButton);
+  
+  const confirmButton  = getByText('OK');
+  fireEvent.click(confirmButton );
 
   await screen.findByText('Recipe deleted successfully');
 });
