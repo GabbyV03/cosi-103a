@@ -26,7 +26,7 @@ test('adds a new recipe into the list', async () => {
   fireEvent.change(textarea, { target: { value: '{"name": "New Recipe", "ingredients": ["Ingredient 1", "Ingredient 2"], "steps": ["Step 1", "Step 2"], "imageUrl": "https://example.com/image.jpg"}' } });
 
   // Simulate clicking the "Add New Recipe" button
-  const addButton = getByText('Add New Recipe');
+  const addButton = getByText('Add');
   fireEvent.click(addButton);
 
   await waitFor(() => {
