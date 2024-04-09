@@ -4,7 +4,7 @@ import App from './App';
 
 // Yao on Apr 8:
 // I think we might have some errors in the test file, cause it can pass anyway even I type the wrong name of the button...?
-// For now, it should NOT pass the test.
+// For now, it should NNNNOOOOOTTTTT pass the test.
 
 // Smoke test for the Landing Page
 test('renders app without crashing', () => {
