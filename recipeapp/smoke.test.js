@@ -39,10 +39,12 @@ test('adds a new recipe into the list', async () => {
 test('renders deletion button and checks its functionality', async () => {
   render(<RecipePage />);
 
+  expect(getByText('Del')).toBeInTheDocument();
   const deleteButton = screen.getByText('Del');
   expect(deleteButton).not.toBeNull();
   userEvent.click(deleteButton);
 
+  expect(getByText('OK')).toBeInTheDocument();
   const confirmButton  = screen.getByText('OK');
   expect(confirmButton).not.toBeNull();
   userEvent.click(confirmButton);
@@ -51,5 +53,5 @@ test('renders deletion button and checks its functionality', async () => {
 });
 
 // Just for testing workflow file
-//process.exit(1);
+process.exit(1);
 
