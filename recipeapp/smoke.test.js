@@ -36,7 +36,6 @@ test('adds a new recipe into the list', async () => {
 });
 
 // Smoke test for the "deletion" button 
-// Smoke test for the "deletion" button 
 test('renders deletion button and checks its functionality', async () => {
   render(<RecipePage />);
 
