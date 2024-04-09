@@ -26,7 +26,7 @@ test('adds a new recipe into the list', async () => {
   fireEvent.change(textarea, { target: { value: '{"name": "New Recipe", "ingredients": ["Ingredient 1", "Ingredient 2"], "steps": ["Step 1", "Step 2"], "imageUrl": "https://example.com/image.jpg"}' } });
 
   // Simulate clicking the "Add New Recipe" button
-  const addButton = getByText('Add');
+  const addButton = getByText('Add New Recipe');
   fireEvent.click(addButton);
 
   await waitFor(() => {
@@ -35,18 +35,21 @@ test('adds a new recipe into the list', async () => {
 });
 
 // Smoke test for the "deletion" button 
+// Smoke test for the "deletion" button 
 test('renders deletion button and checks its functionality', async () => {
   render(<RecipePage />);
 
-  const addButton = getByText('Del');
-  fireEvent.click(addButton);
+  const deleteButton = screen.queryByText('Delete');
+  expect(deleteButton).not.toBeNull();
+  userEvent.click(deleteButton);
 
-  const confirmButton  = getByText('OK');
-  fireEvent.click(confirmButton );
+  const confirmButton  = screen.queryByText('OK');
+  expect(confirmButton).not.toBeNull();
+  userEvent.click(confirmButton);
 
   await screen.findByText('Recipe deleted successfully');
 });
 
 // Just for testing workflow file
-process.exit(1);
+//process.exit(1);
 
