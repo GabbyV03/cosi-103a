@@ -25,5 +25,8 @@ in order to install Azure CLI and make sure to restart the shell
 once done installing run:
 az login --use-device-code and follow the instructions to authenticate
 
+# Smoke Tests (smoke.test.js)
+
+This file contains smoke tests for the application. This a quick first check to catch any major issues. For the page test, we only test 'renders app' and 'renders Team Page'; for the button test, we only test 'add' and 'delete' button.
 
 

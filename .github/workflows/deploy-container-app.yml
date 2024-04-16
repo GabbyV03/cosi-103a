@@ -51,6 +51,7 @@ jobs:
 
       # Deploy Docker image to Azure Container Apps
       - name: Deploy Docker Image to Azure Container Apps
+        id: deployment
         run: |
           az containerapp update \
           --name recipeapp103 \
@@ -64,6 +65,22 @@ jobs:
           revision_id=$(az containerapp revision list --name recipeapp103 --resource-group cosi-103 --query "[?tags.acrImageTag == 'latest'].id" -o tsv)
           echo "::set-output name=revision_id::$revision_id"
 
+      # Get the URL of the revision to be tested
+      - name: Get Latest Revision FQDN
+        id: get_latest_fqdn
+        run: |
+          latest_revision_fqdn=$(az containerapp show --name recipeapp103 --resource-group cosi-103 --query "latestRevisionFqdn" -o tsv)
+          echo "::set-output name=latest_revision_fqdn::$latest_revision_fqdn"
+
+      # Set environment variable with the latest revision FQDN
+      - name: Set Latest Revision FQDN
+        run: echo "LATEST_REVISION_FQDN=${{ steps.get_latest_fqdn.outputs.latest_revision_fqdn }}" >> $GITHUB_ENV
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          cd recipeapp
+          npm install
 
       # Check the result of smoke tests
       - name: Check Smoke Test Result
