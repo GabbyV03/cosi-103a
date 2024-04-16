@@ -66,11 +66,11 @@ jobs:
           echo "::set-output name=revision_id::$revision_id"
 
       # Get the URL of the revision to be tested
-      - name: Get FQDN
-        id: get_fqdn
+      - name: Get Latest Revision FQDN
+        id: get_latest_fqdn
         run: |
-          fqdn=$(az containerapp show --name recipeapp103 --resource-group cosi-103 --query "fqdn" -o tsv)
-          echo "::set-output name=fqdn::$fqdn"
+          latest_revision_fqdn=$(az containerapp show --name recipeapp103 --resource-group cosi-103 --query "latestRevisionFqdn" -o tsv)
+          echo "::set-output name=latest_revision_fqdn::$latest_revision_fqdn"
 
       - name: Install dependencies
         run: |
