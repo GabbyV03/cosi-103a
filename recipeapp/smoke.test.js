@@ -1,7 +1,8 @@
 // Import necessary libraries for HTTP requests
 const axios = require('axios');
 // Get FQDN from environment variable
-const url = https://recipeapp103.proudriver-bfa1cbd6.eastus.azurecontainerapps.io;
+const url = 'https://recipeapp103.proudriver-bfa1cbd6.eastus.azurecontainerapps.io';
+
 
 console.log("URL:", url);
 
