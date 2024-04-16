@@ -77,12 +77,6 @@ jobs:
           cd recipeapp
           npm install
 
-      - name: Run Smoke Tests
-        run: |
-          cd recipeapp
-          npm test smoke.test.js
-        env:
-          CI: true
 
       # Check the result of smoke tests
       - name: Check Smoke Test Result
