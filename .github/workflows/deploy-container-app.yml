@@ -70,11 +70,7 @@ jobs:
         id: get_latest_fqdn
         run: |
           latest_revision_fqdn=$(az containerapp show --name recipeapp103 --resource-group cosi-103 --query "latestRevisionFqdn" -o tsv)
-          echo "::set-output name=latest_revision_fqdn::$latest_revision_fqdn"
-
-      # Set environment variable with the latest revision FQDN
-      - name: Set Latest Revision FQDN
-        run: echo "LATEST_REVISION_FQDN=${{ steps.get_latest_fqdn.outputs.latest_revision_fqdn }}" >> $GITHUB_ENV
+          echo "LATEST_REVISION_FQDN=$latest_revision_fqdn" >> $GITHUB_ENV
 
       # Install dependencies
       - name: Install dependencies
@@ -87,7 +83,7 @@ jobs:
         if: steps.deployment.outcome == 'success'
         run: |
           # Run smoke tests using node and store the exit status
-          node recipeapp/smoke.test.js
+          node recipeapp/smoke.test.js $LATEST_REVISION_FQDN
           exit_status=$?
 
           # Check the exit status to determine if smoke tests passed or failed

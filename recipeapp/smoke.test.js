@@ -1,11 +1,10 @@
-// Get FQDN from environment variable
-const fqdn = process.env.LATEST_REVISION_FQDN;
-
 // Import necessary libraries for HTTP requests
 const axios = require('axios');
+// Get FQDN from environment variable
+const url = 'https://recipeapp103.proudriver-bfa1cbd6.eastus.azurecontainerapps.io';
 
-// Define the URL to test
-const url = `http://${fqdn}/`;
+
+console.log("URL:", url);
 
 // Function to perform smoke tests
 async function runSmokeTests() {
