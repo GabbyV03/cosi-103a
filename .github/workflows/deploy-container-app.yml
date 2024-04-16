@@ -74,9 +74,10 @@ jobs:
 
       # Print latest revision FQDN
       - name: Print Latest Revision FQDN
-        run: echo "Latest Revision FQDN: $LATEST_REVISION_FQDN"
+        run: |
+        echo "Latest Revision FQDN: $LATEST_REVISION_FQDN"
 
-        
+
       # Install dependencies
       - name: Install dependencies
         run: |
