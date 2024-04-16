@@ -3,9 +3,13 @@ const axios = require('axios');
 // Get FQDN from environment variable
 const fqdn = process.env.LATEST_REVISION_FQDN;
 
+console.log("FQDN:", fqdn);
+
 
 // Define the URL to test
 const url = `https://${fqdn}/`;
+
+console.log("URL:", url);
 
 // Function to perform smoke tests
 async function runSmokeTests() {
