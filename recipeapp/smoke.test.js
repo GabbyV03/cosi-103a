@@ -1,11 +1,11 @@
+// Import necessary libraries for HTTP requests
+const axios = require('axios');
 // Get FQDN from environment variable
 const fqdn = process.env.LATEST_REVISION_FQDN;
 
-// Import necessary libraries for HTTP requests
-const axios = require('axios');
 
 // Define the URL to test
-const url = `http://${fqdn}/`;
+const url = `https://${fqdn}/`;
 
 // Function to perform smoke tests
 async function runSmokeTests() {
