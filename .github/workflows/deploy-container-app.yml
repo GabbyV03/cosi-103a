@@ -83,7 +83,8 @@ jobs:
         if: steps.deployment.outcome == 'success'
         run: |
           # Run smoke tests using node and store the exit status
-          node recipeapp/smoke.test.js ${{ steps.get_fqdn.outputs.fqdn }}
+          latest_revision_fqdn="${{ steps.get_latest_fqdn.outputs.latest_revision_fqdn }}"
+          node recipeapp/smoke.test.js $latest_revision_fqdn
           exit_status=$?
 
           # Check the exit status to determine if smoke tests passed or failed
