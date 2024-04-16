@@ -1,5 +1,5 @@
-// Extract FQDN from command-line arguments
-const fqdn = process.argv[2];
+// Get FQDN from environment variable
+const fqdn = process.env.LATEST_REVISION_FQDN;
 
 // Import necessary libraries for HTTP requests
 const axios = require('axios');
