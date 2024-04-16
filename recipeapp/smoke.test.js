@@ -1,13 +1,7 @@
 // Import necessary libraries for HTTP requests
 const axios = require('axios');
 // Get FQDN from environment variable
-const fqdn = process.env.LATEST_REVISION_FQDN;
-
-console.log("FQDN:", fqdn);
-
-
-// Define the URL to test
-const url = `https://${fqdn}/`;
+const url = https://recipeapp103.proudriver-bfa1cbd6.eastus.azurecontainerapps.io;
 
 console.log("URL:", url);
 

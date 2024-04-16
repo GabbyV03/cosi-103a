@@ -72,11 +72,6 @@ jobs:
           latest_revision_fqdn=$(az containerapp show --name recipeapp103 --resource-group cosi-103 --query "latestRevisionFqdn" -o tsv)
           echo "LATEST_REVISION_FQDN=$latest_revision_fqdn" >> $GITHUB_ENV
 
-      # Print latest revision FQDN
-      - name: Print Latest Revision FQDN
-        run: |
-          echo "Latest Revision FQDN: $LATEST_REVISION_FQDN"
-
       # Install dependencies
       - name: Install dependencies
         run: |
