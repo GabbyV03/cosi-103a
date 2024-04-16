@@ -5,6 +5,7 @@
   "dependencies": {
     "@azure/cosmos": "^4.0.0",
     "@azure/identity": "^4.0.1",
+    "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
     "fitty": "^2.4.2",
